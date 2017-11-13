@@ -14,10 +14,10 @@ TODO: Write usage instructions
 5. Submit a pull request :D
 ## History
 TODO: Write history
-## Credits
-Project Manager: Anni Luonuankoski
-Head Engineer: Mikael Meinander
-Other stuff: Ilkka Miettinen
+## Team members
+Anni Luonuankoski
+Mikael Meinander
+Ilkka Miettinen
 ## License
 TODO: Write license
 ]]></content>
