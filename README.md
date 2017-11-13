@@ -1,6 +1,4 @@
-<snippet>
-  <content><![CDATA[
-# ${1:Team-HolidaySpirit}
+# Team-HolidaySpirit
 TODO: Project repository for Metropolia School of Applied Sciences Basic Concepts of Web Technology course.
 ## Installation
 TODO: Describe the installation process
@@ -20,6 +18,3 @@ Mikael Meinander
 Ilkka Miettinen
 ## License
 TODO: Write license
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
