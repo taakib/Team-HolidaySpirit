@@ -55,127 +55,97 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
 body {
-    display: flex;
-    flex-wrap: wrap;
+
 }
 
-a {
-    text-decoration: none;
-    color: #232323;
-    transition: color 0.3s ease;
+.topnav a {
+
+}
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
 }
 
-a:hover {
-    color: tomato;
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 7px 10px;
+  text-decoration: none;
+  font-size: 1em;
 }
 
-#menuToggle {
-    display: block;
-    position: relative;
-    top: 50px;
-    left: 50px;
-    z-index: 1;
-    -webkit-user-select: none;
-    user-select: none;
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
-#menuToggle input {
-    display: block;
-    width: 40px;
-    height: 32px;
-    position: absolute;
-    top: -7px;
-    left: -5px;
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.menu-container {
+    float: left;
+    display: inline-block;
     cursor: pointer;
-    opacity: 0; /* hide this */
-    z-index: 2; /* and place it over the hamburger */
-    -webkit-touch-callout: none;
 }
 
-/*
- * Just a quick hamburger
- */
-#menuToggle span {
-    display: block;
-    width: 33px;
-    height: 4px;
-    margin-bottom: 5px;
-    position: relative;
-    background: #cdcdcd;
-    border-radius: 3px;
-    z-index: 1;
-    transform-origin: 4px 0px;
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-    opacity 0.55s ease;
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
 }
 
-#menuToggle span:first-child {
-    transform-origin: 0% 0%;
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
 }
 
-#menuToggle span:nth-last-child(2) {
-    transform-origin: 0% 100%;
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
 }
 
-/*
- * Transform all the slices of hamburger
- * into a crossmark.
- */
-#menuToggle input:checked ~ span {
-    opacity: 1;
-    transform: rotate(45deg) translate(-2px, -1px);
-    background: #232323;
+.search-container {
+  float: right;
+
 }
 
-/*
- * But let's hide the middle one.
- */
-#menuToggle input:checked ~ span:nth-last-child(3) {
-    opacity: 0;
-    transform: rotate(0deg) scale(0.2, 0.2);
+.search-container input[type=text]{
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
 }
 
-/*
- * Ohyeah and the last one should go the other direction
- */
-#menuToggle input:checked ~ span:nth-last-child(2) {
-    transform: rotate(-45deg) translate(0, -1px);
+.search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
 }
 
-/*
- * Make this absolute positioned
- * at the top left of the screen
- */
-#menu {
-    position: absolute;
-    width: 300px;
-    margin: -100px 0 0 -50px;
-    padding: 50px;
-    padding-top: 125px;
-    background: #ededed;
-    list-style-type: none;
-    -webkit-font-smoothing: antialiased;
-    /* to stop flickering of text in safari */
-    transform-origin: 0% 0%;
-    transform: translate(-100%, 0);
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+.search-container button:hover {
+  background: #ccc;
 }
 
-#menu li {
-    padding: 10px 0;
-    font-size: 22px;
+.gallery {
+
 }
 
-/*
- * And let's slide it in from the left
- */
-#menuToggle input:checked ~ ul {
-    transform: none;
-}
-
-ul {
+.gallery ul {
     list-style-type: none;
     padding: 0;
     display: flex;
@@ -183,16 +153,16 @@ ul {
     justify-content: space-around;
 }
 
-li {
+.gallery li {
     /* width: 33.33%; */
 }
 
-figure {
+.gallery figure {
     margin: .5em;
     position: relative;
 }
 
-figure img {
+.gallery figure img {
     width: 100%;
 }
 
