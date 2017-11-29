@@ -50,14 +50,14 @@ public class User implements Serializable {
     @Column(name = "ID")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "username")
+    //@NotNull
+    //@Size(min = 1, max = 20)
+    @Column(name = "username", length = 20)
     private String username;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
-    @Column(name = "passwd")
+    //@NotNull
+    //@Size(min = 1, max = 200)
+    @Column(name = "passwd", length = 200)
     private String passwd;
     @Column(name = "req_date")
     @Temporal(TemporalType.TIMESTAMP)

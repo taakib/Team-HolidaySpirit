@@ -142,28 +142,20 @@ body {
 }
 
 .gallery {
-
+  width: 100;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .gallery ul {
     list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
 }
 
 .gallery li {
-    /* width: 33.33%; */
-}
+    width: 33.33%;
 
-.gallery figure {
-    margin: .5em;
-    position: relative;
-}
-
-.gallery figure img {
-    width: 100%;
 }
 
 main {
