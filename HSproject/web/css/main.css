@@ -141,6 +141,19 @@ body {
   background: #ccc;
 }
 
+.textbox {
+  text-align: center;
+  font-size: 1em;
+}
+
+.results {
+
+}
+
+.tags {
+
+}
+
 main {
     width: 100%;
 }
@@ -163,10 +176,13 @@ main {
 }
 
 .upload-button {
-  background-color: grey;
-  position: relative;
+  background-color: lightblue;
   float: right;
-  padding: 1em;
+  text-align: center;
+  padding: 10px;
+  margin-right: 10%;
+  border-radius: 100%;
+  width: 5%;
 }
 
 .lightbox-upload {
