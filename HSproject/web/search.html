@@ -23,7 +23,7 @@
         </div>
         <a href="#homepage">home</a>
         <div class="search-container">
-          <form action="/action_page.php">
+          <form action="">
             <input type="text" placeholder="Search.." name="search">
             <button type="submit">Submit</button>
           </form>
@@ -48,6 +48,24 @@
         </li>
       </ul>
     </main>
+
+    <a class="upload-button" href="">+</a>
+
+    <div id="upload-modal" class="hidden">
+      <a href="#" class="closeBtn">&#215;</a>
+      <a href="">drag img here</a>
+      <form>
+        <input type="text" placeholder="itle" name="imgTitle">
+        <input type="text" placeholder="description" name="imgDesc">
+        <input type="text" placeholder="description" name="imgDesc">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div id="img-modal" class="lightbox-img">
+      <a href="#" class="closeBtn">&#215;</a>
+      <img src="" alt="big image">
+    </div>
 
     <script src="js/main-search.js"></script>
     </body>

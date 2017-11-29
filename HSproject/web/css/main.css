@@ -141,6 +141,10 @@ body {
   background: #ccc;
 }
 
+main {
+    width: 100%;
+}
+
 .gallery {
   width: 100;
   padding: 0;
@@ -158,11 +162,14 @@ body {
 
 }
 
-main {
-    width: 100%;
+.upload-button {
+  background-color: grey;
+  position: relative;
+  float: right;
+  padding: 1em;
 }
 
-.lightbox {
+.lightbox-upload {
   width: 70%;
   background-color: #fff;
   position: absolute;
@@ -172,7 +179,7 @@ main {
   padding: 1rem;
 }
 
-.lightbox a {
+.lightbox-upload a {
   color: #000;
   position: absolute;
   right: 1rem;
@@ -180,7 +187,35 @@ main {
   text-decoration: none;
 }
 
-.lightbox img {
+.lightbox-upload {
+  width: 80%;
+  display: block;
+  margin: auto;
+}
+
+.lightbox-upload form {
+
+}
+
+.lightbox-img {
+  width: 70%;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  margin: 0 0 0 -36%;
+  top: 1rem;
+  padding: 1rem;
+}
+
+.lightbox-img a {
+  color: #000;
+  position: absolute;
+  right: 1rem;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+.lightbox-img img {
   width: 80%;
   display: block;
   margin: auto;
