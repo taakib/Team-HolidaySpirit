@@ -9,7 +9,7 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link rel="stylesheet" href="css/normalize.min.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/main-search.css">
 
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
@@ -56,15 +56,15 @@
       </main>
 
       <button id="uploadButton" href="">Upload</button>
-      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+      <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
 
-      <div id="uploadModal" class="hidden">
+      <div id="uploadModal" class="lightbox-upload">
         <a href="#" class="closeBtn">&#215;</a>
-        <a href="">drag img here</a>
-        <form>
-          <input type="text" placeholder="itle" name="imgTitle">
+        <form id="uploadForm" action="/fileupload" enctype="multipart/form-data" method="post">
+          <input type="file" placeholder="image" name="uploadedImg" accept="image/*">
+          <input type="text" placeholder="title" name="imgTitle">
           <input type="text" placeholder="description" name="imgDesc">
-          <input type="text" placeholder="description" name="imgDesc">
+          <input type="text" placeholder="tags" name="imgTags">
           <button type="submit">Submit</button>
         </form>
       </div>

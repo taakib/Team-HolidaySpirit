@@ -157,7 +157,6 @@ body {
 
 main {
   width: 100%;
-  background-color: red;
 }
 
 main ul {
@@ -169,7 +168,7 @@ main ul {
 }
 
 .gallery li {
-    width: 40%;
+    width: 30%;
 }
 
 .gallery img {
@@ -177,7 +176,7 @@ main ul {
 
 }
 
-#myBtn {
+#topBtn {
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
   bottom: 20px; /* Place the button at the bottom of the page */
@@ -192,7 +191,7 @@ main ul {
   border-radius: 10px; /* Rounded corners */
 }
 
-#myBtn:hover {
+#topBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
 }
 
@@ -215,13 +214,16 @@ main ul {
 }
 
 .lightbox-upload {
-  width: 70%;
+  width: 30%;
+  height: 30%;
   background-color: #fff;
-  position: absolute;
-  left: 50%;
+  position: fixed;
+  right: 33%;
+  bottom: 30%;
+  top: 30%;
   margin: 0 0 0 -36%;
-  top: 1rem;
-  padding: 1rem;
+  padding: 1em;
+  text-align: center;
 }
 
 .lightbox-upload a {
@@ -232,14 +234,13 @@ main ul {
   text-decoration: none;
 }
 
-.lightbox-upload {
-  width: 80%;
-  display: block;
-  margin: auto;
+.lightbox-upload form {
+  display: inline-grid;
+
 }
 
-.lightbox-upload form {
-
+.lightbox-upload form input{
+  margin-bottom: 5%;
 }
 
 .lightbox-img {
@@ -272,7 +273,7 @@ main ul {
 
 @media only screen and (min-width: 669px) {
     body {
-      /*  max-width: 60em;
+      /*max-width: 60em;
         margin: auto;
         */
     }
