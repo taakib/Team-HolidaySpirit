@@ -58,7 +58,7 @@ public class DBController {
         return em.createNamedQuery("FavouritesPK.findAll").getResultList();
     }
     
-    public FavouritesPK insertPost(FavouritesPK f){
+    public FavouritesPK insertFavsPK(FavouritesPK f){
         em.persist(f);
         return f;
     }
