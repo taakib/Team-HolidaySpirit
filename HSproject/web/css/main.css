@@ -63,6 +63,7 @@ body {
 .topnav a {
 
 }
+
 .topnav {
   overflow: hidden;
   background-color: #e9e9e9;
@@ -155,24 +156,24 @@ body {
 }
 
 main {
-    width: 100%;
-}
-
-.gallery {
-  width: 100;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  width: 100%;
 }
 
 .gallery ul {
-    list-style-type: none;
+  padding: 0;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-around;
 }
 
 .gallery li {
-    width: 33.33%;
+    width: 40%;
+    list-style-type: none;
+    background-color: red;
+}
 
+.gallery img {
+  width: 100%;
 }
 
 .upload-button {

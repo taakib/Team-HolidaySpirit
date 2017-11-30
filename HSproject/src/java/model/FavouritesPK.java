@@ -19,11 +19,11 @@ import javax.validation.constraints.NotNull;
 public class FavouritesPK implements Serializable {
 
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "user_ID")
     private int userID;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "post_ID")
     private int postID;
 

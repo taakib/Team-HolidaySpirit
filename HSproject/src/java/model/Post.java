@@ -46,25 +46,25 @@ public class Post implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
-    private Integer id;
+    private int id;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
-    @Column(name = "source_url")
+    //@NotNull
+    //@Size(min = 1, max = 200)
+    @Column(name = "source_url", length = 200)
     private String sourceUrl;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "title")
+    //@NotNull
+    //@Size(min = 1, max = 30)
+    @Column(name = "title", length = 30)
     private String title;
-    @Size(max = 140)
-    @Column(name = "description")
+    //@Size(max = 140)
+    @Column(name = "description", length = 140)
     private String description;
     @Column(name = "upload_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date uploadTime;
     @Column(name = "views")
-    private Integer views;
+    private int views;
     @JoinColumn(name = "uploader_id", referencedColumnName = "ID")
     @ManyToOne
     private User uploaderId;
@@ -141,7 +141,7 @@ public class Post implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += ((Integer)id).hashCode();
         return hash;
     }
 
@@ -152,10 +152,7 @@ public class Post implements Serializable {
             return false;
         }
         Post other = (Post) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return other.id == this.id;
     }
 
     @Override

@@ -48,7 +48,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
-    private Integer id;
+    private int id;
     @Basic(optional = false)
     //@NotNull
     //@Size(min = 1, max = 20)
@@ -63,7 +63,7 @@ public class User implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date reqDate;
     @Column(name = "user_level")
-    private Integer userLevel;
+    private int userLevel;
     @Column(name = "logged_in")
     @Temporal(TemporalType.TIMESTAMP)
     private Date loggedIn;
@@ -154,21 +154,18 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += ((Integer)id).hashCode();
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+       // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof User)) {
             return false;
         }
         User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return other.id == this.id;
     }
 
     @Override
