@@ -8,6 +8,7 @@ import model.User;
 import model.Post;
 import model.Tags;
 import model.Favourites;
+import model.FavouritesPK;
 
 /**
  *
@@ -22,12 +23,43 @@ public class DBController {
     public DBController() {
     }
     
-    public List<User> getAll(){
+    public List<User> getAllUsers(){
         return em.createNamedQuery("User.findAll").getResultList();
     }
     
-    public User insert(User u){
+    public User insertUser(User u){
         em.persist(u);
         return u;
+    }
+    
+    public List<Post> getAllPosts(){
+        return em.createNamedQuery("Post.findAll").getResultList();
+    }
+    
+    public Post insertPost(Post p){
+        em.persist(p);
+        return p;
+    }
+    
+    public List<Tags> getAllTags(){
+        return em.createNamedQuery("Tags.findAll").getResultList();
+    }
+    
+    public List<Favourites> getAllFavs(){
+        return em.createNamedQuery("Favourites.findAll").getResultList();
+    }
+    
+    public Favourites insertFav(Favourites f){
+        em.persist(f);
+        return f;
+    }
+    
+    public List<FavouritesPK> getAllFavsPK(){
+        return em.createNamedQuery("FavouritesPK.findAll").getResultList();
+    }
+    
+    public FavouritesPK insertPost(FavouritesPK f){
+        em.persist(f);
+        return f;
     }
 }

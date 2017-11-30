@@ -157,9 +157,11 @@ body {
 
 main {
   width: 100%;
+  background-color: red;
 }
 
-.gallery ul {
+main ul {
+
   padding: 0;
   flex-wrap: wrap;
   display: flex;
@@ -169,11 +171,11 @@ main {
 .gallery li {
     width: 40%;
     list-style-type: none;
-    background-color: red;
 }
 
 .gallery img {
   width: 100%;
+
 }
 
 .upload-button {
