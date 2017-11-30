@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,12 +18,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -40,6 +43,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Post.findByUploadTime", query = "SELECT p FROM Post p WHERE p.uploadTime = :uploadTime")
     , @NamedQuery(name = "Post.findByViews", query = "SELECT p FROM Post p WHERE p.views = :views")})
 public class Post implements Serializable {
+
+    @Column(name = "views")
+    private Integer views;
+    @OneToMany(mappedBy = "postID")
+    private Collection<Tags> tagsCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -63,8 +71,6 @@ public class Post implements Serializable {
     @Column(name = "upload_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date uploadTime;
-    @Column(name = "views")
-    private int views;
     @JoinColumn(name = "uploader_id", referencedColumnName = "ID")
     @ManyToOne
     private User uploaderId;
@@ -122,13 +128,6 @@ public class Post implements Serializable {
         this.uploadTime = uploadTime;
     }
 
-    public Integer getViews() {
-        return views;
-    }
-
-    public void setViews(Integer views) {
-        this.views = views;
-    }
 
     public User getUploaderId() {
         return uploaderId;
@@ -158,6 +157,23 @@ public class Post implements Serializable {
     @Override
     public String toString() {
         return "model.Post[ id=" + id + " ]";
+    }
+
+    public Integer getViews() {
+        return views;
+    }
+
+    public void setViews(Integer views) {
+        this.views = views;
+    }
+
+    @XmlTransient
+    public Collection<Tags> getTagsCollection() {
+        return tagsCollection;
+    }
+
+    public void setTagsCollection(Collection<Tags> tagsCollection) {
+        this.tagsCollection = tagsCollection;
     }
     
 }

@@ -62,14 +62,14 @@ public class User implements Serializable {
     @Column(name = "req_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date reqDate;
-    @Column(name = "user_level")
-    private int userLevel;
     @Column(name = "logged_in")
     @Temporal(TemporalType.TIMESTAMP)
     private Date loggedIn;
     @Column(name = "logged_out")
     @Temporal(TemporalType.TIMESTAMP)
     private Date loggedOut;
+    @Column(name = "user_level")
+    private int userLevel;
     @OneToMany(mappedBy = "uploaderId")
     private Collection<Post> postCollection;
 
