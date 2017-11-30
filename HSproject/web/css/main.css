@@ -169,7 +169,7 @@ main ul {
 }
 
 .gallery li {
-    width: 50%;
+    width: 40%;
 }
 
 .gallery img {
@@ -272,18 +272,14 @@ main ul {
 
 @media only screen and (min-width: 669px) {
     body {
-        max-width: 60em;
+      /*  max-width: 60em;
         margin: auto;
+        */
     }
 
     main {
-        width: 80%;
-    }
 
-    aside {
-        width: 20%;
     }
-
 }
 
 @media print,
