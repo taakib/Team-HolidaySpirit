@@ -2,13 +2,10 @@ package controller;
 
 import java.util.List;
 import javax.ejb.EJB;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
@@ -46,7 +43,6 @@ public class DBService {
         return dbc.getAllUsers();
     }
     
-
     /**
      * PUT method for updating or creating an instance of DBService
      * @param content representation for the resource

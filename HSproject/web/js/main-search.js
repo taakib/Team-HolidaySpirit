@@ -15,4 +15,60 @@ function topFunction() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
-//fill gallery with imgs from the server
+//upload lightbox
+const uploadBtn = document.querySelector('#uploadButton');
+uploadBtn.addEventListener('click',(evt) => {
+  evt.preventDefault();
+  const modal = document.querySelector('#uploadModal');
+  modal.classList.replace('hidden', 'lightbox-upload');
+  const closeButton = document.querySelector('.closeBtn');
+  closeButton.addEventListener('click', (evt) => {
+    modal.classList.replace('lightbox-upload', 'hidden');
+  });
+});
+
+/*fetch imgs from server
+const fetchImages = () => {
+  const ul = document.querySelector('ul');
+  fetch('images.json').then((response) => { //how to fetch imgs from the server
+    return response.json();
+  }).then((json) => {
+    let html ='';
+    json.forEach((image) => {
+      html +=
+          `<li>
+            <a href="img/original/${image.mediaUrl}"><img src="img/thumbs/${image.mediaThumb}"></a>
+          </li>`;
+    });
+    ul.innerHTML = html;
+    biggerImgs();
+  });
+};*/
+
+/*img lightbox
+const biggerImgs = () => {
+  //select all a elements inside ul
+  const links = document.querySelector('ul').querySelectorAll('a');
+  //loop links
+  links.forEach((link) => {
+    //when link is clicked
+    link.addEventListener('click', (evt) => {
+      //prevent default action
+      evt.preventDefault();
+      //get href value of link
+      const hrefValue = link.getAttribute('href');
+      //set modal image src to href value
+      const modal = document.querySelector('#imgModal');
+      modal.querySelector('img').setAttribute('src', hrefValue);
+      //display modal (use lightbox class)
+      modal.classList.replace('hidden', 'lightbox-img');
+      //select close button of modal
+      const closeButton = document.querySelector('.closeBtn');
+      //when close button is clicked hide modal
+      closeButton.addEventListener('click', (evt) => {
+        //const modal = document.querySelector('#modal');
+         modal.classList.replace('lightbox-img', 'hidden');
+      });
+    });
+  });
+};*/
