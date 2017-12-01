@@ -58,7 +58,7 @@ form.addEventListener('submit', (evt) => {
     checkAttribute(inputs, 'required', checkEmpty);
     checkAttribute(inputs, 'pattern', checkPattern);
     console.log(formOK);
-    if (formOK===-8){
+    if (formOK===-4){
         form.submit();
     }
 });

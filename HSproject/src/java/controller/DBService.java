@@ -46,9 +46,12 @@ public class DBService {
     @POST
     @Path("user")
     @Produces(MediaType.APPLICATION_JSON)
-    public User postUser(@FormParam("value") String name) {
+    public User postUser(@FormParam("username") String name, @FormParam("password") String password) {
+        //check if username exists
+        checkIfUserExists(name);
         User u = new User();
         u.setUsername(name);
+        u.setPasswd(password);
         return dbc.insertUser(u);
     }
     
@@ -84,5 +87,15 @@ public class DBService {
     @Produces(MediaType.APPLICATION_JSON)
     public Post postFav() {
         return null;
-    }  
+    }
+    
+    
+    public boolean checkIfUserExists(String name) {
+        List<User> users = getUserJson();
+        boolean containsName = false;
+        for (User u : users){
+            containsName = u.getUsername().contains(name);
+        }
+        return containsName;
+    }
 }
