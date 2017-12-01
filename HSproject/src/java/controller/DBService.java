@@ -27,40 +27,62 @@ public class DBService {
     @EJB
     private DBController dbc;
 
-    /**
-     * Creates a new instance of DBService
-     */
     public DBService() {
     }
 
-    /**
-     * Retrieves representation of an instance of controller.DBService
-     * @return an instance of java.lang.String
-     */
     @GET
+    @Path("user")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> getJson() {
+    public List<User> getUserJson() {
         return dbc.getAllUsers();
     }
     
-    /**
-     * PUT method for updating or creating an instance of DBService
-     * @param content representation for the resource
-     */
     @PUT
+    @Path("user")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
+    public void putUserJson(String content) {
     }
 
     @POST
+    @Path("user")
     @Produces(MediaType.APPLICATION_JSON)
-    public User post(@FormParam("value") String name) {
+    public User postUser(@FormParam("value") String name) {
         User u = new User();
         u.setUsername(name);
         return dbc.insertUser(u);
     }
     
-    /*@POST
-    @Path("kissa")
-    */
+    @GET
+    @Path("post")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Post> getPostJson() {
+        return dbc.getAllPosts();
+    }
+    
+    @POST
+    @Path("post")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Post postPost() {
+        return null;
+    }
+    
+    @GET
+    @Path("tags")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Tags> getTagsJson() {
+        return dbc.getAllTags();
+    }
+    
+    @GET
+    @Path("favourites")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Favourites> getFavsJson() {
+        return dbc.getAllFavs();
+    }
+    @POST
+    @Path("favourites")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Post postFav() {
+        return null;
+    }  
 }
