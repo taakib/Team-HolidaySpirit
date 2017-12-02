@@ -71,6 +71,8 @@ public class Post implements Serializable {
     private User uploaderId;
 
     public Post() {
+        //this.uploadTime = uploadTime; 
+        this.views = 0;
     }
 
     public Post(Integer id) {

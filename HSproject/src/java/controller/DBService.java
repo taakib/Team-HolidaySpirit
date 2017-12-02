@@ -8,7 +8,6 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import model.User;
 import model.Post;
@@ -41,7 +40,7 @@ public class DBService {
     @Path("register")
     @Produces(MediaType.APPLICATION_JSON)
     public void postUserRegister(@FormParam("username") String name, @FormParam("password") String password) {
-        List<User> users = getUserJson();
+        List<User> users = dbc.getAllUsers();
         for (User u : users){
             if (u.getUsername().contains(name)) {
                 //return an error to the client side
@@ -59,7 +58,7 @@ public class DBService {
     @Path("login")
     @Produces(MediaType.APPLICATION_JSON)
     public void postUserLogIn(@FormParam("username") String name, @FormParam("password") String password) {
-        List <User> users = getUserJson();
+        List <User> users = dbc.getAllUsers();
         for (User u : users){
             if (!u.getUsername().equals(name)) {
                 //return an error message for the client

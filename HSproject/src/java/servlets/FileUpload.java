@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import model.User;
 import model.Post;
 import model.Tags;
-import model.Favourites;
-import model.FavouritesPK;
 
 /**
  *
@@ -37,11 +34,20 @@ public class FileUpload extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
         response.addHeader("Access-Control-Allow-Origin", "*");
         response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
         response.setContentType("application/json");
-        request.getPart("uploadedImg").write(request.getPart("uploadedImg").getSubmittedFileName()); //saves file to the server tmp folder
+        
+        //saves file to the server tmp folder
+        request.getPart("uploadedImg").write(request.getPart("uploadedImg").getSubmittedFileName());
+        String imgUrl = "url for the img";
+        //String title = @Formparam ("imgTitle") String title
+        Post p = new Post();
+        //p.setSourceUrl(sourceUrl);
+        //p.setUploaderId(uploaderID); //get from session id?
+        p.setTitle(request.getParameter("imgTitle"));
+        p.setDescription(request.getParameter("imgDesc"));
+        //p.setTags(); //how to set multiple? list etc?
     }
     
     @Override
