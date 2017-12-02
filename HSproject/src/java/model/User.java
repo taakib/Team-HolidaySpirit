@@ -69,6 +69,8 @@ public class User implements Serializable {
     private Collection<Post> postCollection;
 
     public User() {
+        //u.setReqDate(reqDate);
+        //u.setUserLevel();
     }
 
     public User(Integer id) {

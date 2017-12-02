@@ -48,11 +48,11 @@
     </div>
 </nav>
 
-<form method="post" action="db/service/user" novalidate>
+<form method="post" action="db/service/register" novalidate>
     <!-- your input elements here -->
     <div class="validform">
         Username*:<br>
-        <input type="text" name="username" required pattern=".{5,}" placeholder="5 or more characters"><br>
+        <input type="text" name="username" required pattern=".{3,}" placeholder="3 or more characters"><br>
         <p class="formerror">Form is incorrect</p>
         Password*:<br>
         <input type="password" name="password" pattern=".{6,}" placeholder="Six or more characters" required><br>

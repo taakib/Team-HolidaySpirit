@@ -37,24 +37,48 @@ public class DBService {
         return dbc.getAllUsers();
     }
     
-    @PUT
-    @Path("user")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putUserJson(String content) {
-    }
-
     @POST
-    @Path("user")
+    @Path("register")
     @Produces(MediaType.APPLICATION_JSON)
-    public User postUser(@FormParam("username") String name, @FormParam("password") String password) {
-        //check if username exists
-        checkIfUserExists(name);
-        User u = new User();
-        u.setUsername(name);
-        u.setPasswd(password);
-        return dbc.insertUser(u);
+    public void postUserRegister(@FormParam("username") String name, @FormParam("password") String password) {
+        List<User> users = getUserJson();
+        for (User u : users){
+            if (u.getUsername().contains(name)) {
+                //return an error to the client side
+                System.out.println("username already exists");
+            } else {
+                User userNew = new User();
+                userNew.setUsername(name);
+                userNew.setPasswd(password);
+                dbc.insertUser(userNew);
+            }
+        }
     }
     
+    @POST
+    @Path("login")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void postUserLogIn(@FormParam("username") String name, @FormParam("password") String password) {
+        List <User> users = getUserJson();
+        for (User u : users){
+            if (!u.getUsername().equals(name)) {
+                //return an error message for the client
+                System.out.println("username doesn't exist");
+            } else {
+                //create a session id?
+                //what to do here? <o>
+                //u.setLoggedIn(loggedIn);
+            }
+        }
+    }
+    
+    @POST
+    @Path("logout")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Post postUserLogOut() {
+        return null;
+    }
+   
     @GET
     @Path("post")
     @Produces(MediaType.APPLICATION_JSON)
@@ -87,15 +111,5 @@ public class DBService {
     @Produces(MediaType.APPLICATION_JSON)
     public Post postFav() {
         return null;
-    }
-    
-    
-    public boolean checkIfUserExists(String name) {
-        List<User> users = getUserJson();
-        boolean containsName = false;
-        for (User u : users){
-            containsName = u.getUsername().contains(name);
-        }
-        return containsName;
     }
 }
