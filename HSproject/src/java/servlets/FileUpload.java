@@ -40,14 +40,13 @@ public class FileUpload extends HttpServlet {
         
         //saves file to the server tmp folder
         request.getPart("uploadedImg").write(request.getPart("uploadedImg").getSubmittedFileName());
-        String imgUrl = "url for the img";
-        //String title = @Formparam ("imgTitle") String title
         Post p = new Post();
-        //p.setSourceUrl(sourceUrl);
+        p.setSourceUrl("10.114.34.129/uploads/" + request.getPart("uploadedImg").getSubmittedFileName() +"\"}");
         //p.setUploaderId(uploaderID); //get from session id?
         p.setTitle(request.getParameter("imgTitle"));
         p.setDescription(request.getParameter("imgDesc"));
         //p.setTags(); //how to set multiple? list etc?
+        
     }
     
     @Override
