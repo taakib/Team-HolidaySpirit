@@ -16,7 +16,7 @@ import model.Tags;
  * @author blure
  */
 @WebServlet(name = "FileUpload", urlPatterns = {"/fileupload"})
-@MultipartConfig(location = "/var/www/html/uploads") //create folder for imgs
+@MultipartConfig(location = "/var/www/html/uploads") //set a maximum file size
 public class FileUpload extends HttpServlet {
 
    
@@ -41,7 +41,7 @@ public class FileUpload extends HttpServlet {
         //saves file to the server tmp folder
         request.getPart("uploadedImg").write(request.getPart("uploadedImg").getSubmittedFileName());
         Post p = new Post();
-        p.setSourceUrl("10.114.34.129/uploads/" + request.getPart("uploadedImg").getSubmittedFileName() +"\"}");
+        p.setSourceUrl("10.114.34.129/uploads/" + request.getPart("uploadedImg").getSubmittedFileName());
         //p.setUploaderId(uploaderID); //get from session id?
         p.setTitle(request.getParameter("imgTitle"));
         p.setDescription(request.getParameter("imgDesc"));
