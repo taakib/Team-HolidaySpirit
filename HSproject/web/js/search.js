@@ -75,7 +75,7 @@ const biggerImgs = () => {
   });
 };*/
 
-//
+//upload img function
 const upload = (evt) => {
   //prevents the form from sending
   evt.preventDefault();
