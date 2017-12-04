@@ -42,8 +42,8 @@ const showImages = () => {
 };
 
 showImages(); */
-/*
 
+/*
 const modal = document.querySelector('#modal');
 const linkActions = () => {
     //select all a elemtns inside ul (to not select closing button X)
@@ -69,5 +69,38 @@ closeButton.addEventListener('click', (evt) => {
     //when close button is clicked hide modal
     //classlist replace lightbox with hidden
     modal.classList.replace('lightbox', 'hidden');
+});*/
+
+
+
+
+
+//this is for the image testing before getting images from database.
+//try to get pictures from the page to open in modal/lightbox
+
+
+
+const photoArea = document.querySelector('#photoarea');
+const linkActions = () => {
+    //const a = document.querySelector('ul').querySelectorAll('a');
+    const a = document.querySelectorAll('a');
+    //const img = document.querySelectorAll('img');
+    a.forEach((link) => {
+        link.addEventListener('click', (evt) => {
+            console.log("clicked " + link);
+            evt.preventDefault();
+            const href=link.getAttribute('href');
+            photoArea.querySelector('a').setAttribute('src',href);
+            photoArea.classList.replace('default', 'lightboxi');
+            //get image , title, description and tags for the image?
+        })
+    })
+};
+
+linkActions();
+
+
+const closeButton = document.querySelector('.closeBtn');
+closeButton.addEventListener('click', (evt) => {
+    photoArea.classList.replace('lightboxi', 'hidden');
 });
-*/
