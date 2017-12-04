@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -15,9 +16,9 @@ import model.Tags;
  *
  * @author blure
  */
-@WebServlet(name = "FileUpload", urlPatterns = {"/fileupload"})
+@WebServlet(name = "ImgUpload", urlPatterns = {"/imgupload"})
 @MultipartConfig(location = "/var/www/html/uploads") //set a maximum file size
-public class FileUpload extends HttpServlet {
+public class ImgUpload extends HttpServlet {
 
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -37,15 +38,15 @@ public class FileUpload extends HttpServlet {
         response.addHeader("Access-Control-Allow-Origin", "*");
         response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
         response.setContentType("application/json");
-        
-        //saves file to the server tmp folder
-        request.getPart("uploadedImg").write(request.getPart("uploadedImg").getSubmittedFileName());
-        Post p = new Post();
-        p.setSourceUrl("10.114.34.129/uploads/" + request.getPart("uploadedImg").getSubmittedFileName());
-        //p.setUploaderId(uploaderID); //get from session id?
-        p.setTitle(request.getParameter("imgTitle"));
-        p.setDescription(request.getParameter("imgDesc"));
-        //p.setTags(); //how to set multiple? list etc?
+   
+            try (PrintWriter out = response.getWriter()) {
+            String title = request.getParameter("imgTitle");
+            String description = request.getParameter("imgDesc");
+            //saves the img to the server
+            request.getPart("uploadedImg").write(request.getPart("uploadedImg").getSubmittedFileName());
+            out.print("{\"src\" : \"//10.114.34.129/uploads/" + request.getPart("uploadedImg").getSubmittedFileName() +"\"}");
+           
+        }   
         
     }
     
