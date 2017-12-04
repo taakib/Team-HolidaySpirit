@@ -9,6 +9,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NewCookie;
+import javax.ws.rs.core.Response;
 import model.User;
 import model.Post;
 import model.Tags;
@@ -29,13 +31,53 @@ public class DBService {
 
     public DBService() {
     }
-   
+  
+    /*
+    //store a new cookie
     @GET
-    @Path("user")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<User> getUserJson() {
-        return dbc.getAllUsers();
+    @Path("/login")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response login() {
+        NewCookie cookie = new NewCookie("name", "123");
+        return Response.ok("OK").cookie(cookie).build();
     }
+    //to retrieve a cookie
+    @GET
+    @Path("/foo")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response foo(@CookieParam("name") Cookie cookie) {
+        if (cookie == null) {
+            return Response.serverError().entity("ERROR").build();
+        } else {
+            return Response.ok(cookie.getValue()).build();
+        }
+    }
+    
+    //returns only the cookie value
+    @GET
+    @Path("/foo")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response foo(@CookieParam("name") String value) {
+        System.out.println(value);
+        if (value == null) {
+            return Response.serverError().entity("ERROR").build();
+        } else {
+            return Response.ok(value).build();
+        }
+    }
+    
+    //removes a cookie
+    @GET
+    @Path("/logout")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response logout(@CookieParam("name") Cookie cookie) {
+        if (cookie != null) {
+            NewCookie newCookie = new NewCookie(cookie, null, 0, false);
+            return Response.ok("OK").cookie(newCookie).build();
+        }
+        return Response.ok("OK - No session").build();
+    }
+    */
     
     @POST
     @Path("register")

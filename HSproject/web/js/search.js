@@ -75,6 +75,8 @@ const biggerImgs = () => {
   });
 };*/
 
+//comments
+
 //upload img function
 const upload = (evt) => {
   //prevents the form from sending
@@ -101,4 +103,4 @@ const upload = (evt) => {
 };
 
 // make an event listener which calls upload function when the form is submitted
-document.querySelector('#uploadform').addEventListener('submit', upload);
+document.querySelector('#uploadForm').addEventListener('submit', upload);
