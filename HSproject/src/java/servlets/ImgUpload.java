@@ -1,7 +1,9 @@
 package servlets;
 
+import controller.DBController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +21,9 @@ import model.Tags;
 @WebServlet(name = "ImgUpload", urlPatterns = {"/imgupload"})
 @MultipartConfig(location = "/var/www/html/uploads") //set a maximum file size
 public class ImgUpload extends HttpServlet {
+    
+    @EJB
+    private DBController dbc;
 
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -40,12 +45,15 @@ public class ImgUpload extends HttpServlet {
         response.setContentType("application/json");
    
             try (PrintWriter out = response.getWriter()) {
-            String title = request.getParameter("imgTitle");
-            String description = request.getParameter("imgDesc");
-            //saves the img to the server
+            //save img to the server
+            Post p = new Post();
             request.getPart("uploadedImg").write(request.getPart("uploadedImg").getSubmittedFileName());
-            out.print("{\"src\" : \"//10.114.34.129/uploads/" + request.getPart("uploadedImg").getSubmittedFileName() +"\"}");
-           
+            p.setSourceUrl("//10.114.34.129/uploads/" + request.getPart("uploadedImg").getSubmittedFileName());
+            p.setTitle(request.getParameter("imgTitle"));
+            p.setDescription(request.getParameter("imgDesc"));
+            //p.setTagsCollection(tags);
+            //p.setUploaderId(uploaderID); get id from cookies
+            dbc.insertPost(p);
         }   
         
     }

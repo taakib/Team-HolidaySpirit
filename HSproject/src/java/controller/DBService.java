@@ -1,11 +1,9 @@
 package controller;
 
-import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.annotation.MultipartConfig;
 import javax.ws.rs.Produces;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -31,18 +29,7 @@ public class DBService {
 
     public DBService() {
     }
-    
-    /*@POST
-    @Path("upload")
-    @Produces(MediaType.APPLICATION_JSON)
-    public void upload(@FormParam("uploadedImg") String sourceUrl, @FormParam("imgTitle") String title, @FormParam("imgDesc") String description){
-        
-        
-        Post p = new Post();
-        p.setTitle(title);
-        p.setDescription(description);
-    }*/
-
+   
     @GET
     @Path("user")
     @Produces(MediaType.APPLICATION_JSON)

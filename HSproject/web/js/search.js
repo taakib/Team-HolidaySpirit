@@ -91,7 +91,7 @@ const upload = (evt) => {
          body: data
      };
   //send the file to the same url as in task a by using fetch -method
-  fetch('/imgupload', settings).then((response) => {
+  fetch('imgupload', settings).then((response) => {
     return response.json();
   }).then((json) => {
     //when file upload is complete, user server response to display uploaded image
