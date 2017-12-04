@@ -79,7 +79,6 @@ nbactions.xml
 nb-configuration.xml
 
 #GLASSFISH-RESOURCES
-web/
 WEB-INF/
 glassfish-resources.xml
 
