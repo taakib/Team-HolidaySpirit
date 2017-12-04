@@ -38,6 +38,14 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByLoggedOut", query = "SELECT u FROM User u WHERE u.loggedOut = :loggedOut")})
 public class User implements Serializable {
 
+    @Column(name = "user_level")
+    private Integer userLevel;
+    @Size(max = 200)
+    @Column(name = "img_url")
+    private String imgUrl;
+    @OneToMany(mappedBy = "commenterId")
+    private Collection<Comments> commentsCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,8 +71,6 @@ public class User implements Serializable {
     @Column(name = "logged_out")
     @Temporal(TemporalType.TIMESTAMP)
     private Date loggedOut;
-    @Column(name = "user_level")
-    private int userLevel;
     @OneToMany(mappedBy = "uploaderId")
     private Collection<Post> postCollection;
 
@@ -164,6 +170,23 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "model.User[ id=" + id + " ]";
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    @XmlTransient
+    public Collection<Comments> getCommentsCollection() {
+        return commentsCollection;
+    }
+
+    public void setCommentsCollection(Collection<Comments> commentsCollection) {
+        this.commentsCollection = commentsCollection;
     }
     
 }

@@ -60,14 +60,23 @@
 
       <div id="uploadModal" class="hidden">
         <a href="#" class="closeBtn">&#215;</a>
-        <form id="uploadForm" action="/fileupload" enctype="multipart/form-data" method="post">
-          <input type="file" placeholder="image" name="uploadedImg" accept="image/*">
+        <form id="uploadForm" action="db/service/upload" enctype="multipart/form-data" method="post">
+          <input type="file" name="uploadedImg" accept="image/*">
           <input type="text" placeholder="title" name="imgTitle">
           <input type="text" placeholder="description" name="imgDesc">
-          <input type="text" placeholder="tags" name="imgTags">
+          <select name="tags" multiple="" class="ui-fluid-dropdown">
+            <option value="">Tags</option>
+            <option value="santa">santa</option>
+            <option value="reindeer">reindeer</option>
+            <option value="presents">presents</option>
+            <option value="snow">snow</option>
+            <option value="red">red</option>
+            <option value="candle">candle</option>
+            <option value="fireplace">fireplace</option>
+          </select>
           <input type="submit" value="upload">
         </form>
-      </div>
+
 
       <div id="imgModal" class="hidden">
         <a href="#" class="">&#215;</a>

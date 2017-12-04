@@ -39,6 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Post.findByViews", query = "SELECT p FROM Post p WHERE p.views = :views")})
 public class Post implements Serializable {
 
+    @OneToMany(mappedBy = "postId")
+    private Collection<Comments> commentsCollection;
+
     @Column(name = "views")
     private Integer views;
     @OneToMany(mappedBy = "postID")
@@ -166,5 +169,14 @@ public class Post implements Serializable {
 
     public void setTagsCollection(Collection<Tags> tagsCollection) {
         this.tagsCollection = tagsCollection;
+    }
+
+    @XmlTransient
+    public Collection<Comments> getCommentsCollection() {
+        return commentsCollection;
+    }
+
+    public void setCommentsCollection(Collection<Comments> commentsCollection) {
+        this.commentsCollection = commentsCollection;
     }
 }
