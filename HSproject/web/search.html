@@ -38,7 +38,7 @@
       <main>
         <ul class="gallery">
           <li>
-              <a href="img/pexels-photo-236586.jpeg"><img id="testupload" src="" alt="santaimg"></a>
+              <a href="img/pexels-photo-236586.jpeg"><img id="testupload" src=""></a>
             </li>
             <li>
               <a href="img/pexels-photo-306864.jpeg"><img src="img/christmas-thumb-001.jpg" alt="santaimg"></a>
@@ -61,7 +61,7 @@
       <div id="uploadModal" class="hidden">
         <a href="#" class="closeBtn">&#215;</a>
         <form id="uploadForm" action="imgupload" enctype="multipart/form-data" method="post">
-          <input type="file" name="uploadedImg" accept="image/*">
+          <input type="file" name="imgfile" accept="image/*">
           <input type="text" placeholder="title" name="imgTitle">
           <input type="text" placeholder="description" name="imgDesc">
           <select name="tags" multiple="" class="ui-fluid-dropdown">
@@ -76,6 +76,7 @@
           </select>
           <input type="submit" value="upload">
         </form>
+      </div>
 
 
       <div id="imgModal" class="hidden">
