@@ -135,17 +135,17 @@ aside {
     width: 100%;
 }
 
-.lightbox {
+.lightboxi {
     width: 70%;
     background-color: #fff;
-    position: absolute;
+    position: fixed;
     top: 1rem;
     padding: 1rem;
     left: 50%;
     margin: 0 0 0 -35%;
 }
 
-.lightbox a {
+.lightboxi a {
     color: #000;
     position: absolute;
     right: 1rem;
@@ -153,11 +153,13 @@ aside {
     text-decoration: none;
 }
 
-.lightbox img {
+.lightboxi img {
     width: 90%;
     margin: auto;
     display: block;
 }
+
+
 
 /* ==========================================================================
    Media Queries
@@ -181,6 +183,7 @@ aside {
         margin: 5px;
     }
     .profile .avatar {
+        /* it is better to user display block , margin 0 auto instead of text-align center for image elements*/
 
     }
 
@@ -298,6 +301,7 @@ aside {
     width: 90%;
     margin: auto;
     text-align: center;
+
 }
 
 #photoarea img {
