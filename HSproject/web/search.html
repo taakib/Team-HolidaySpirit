@@ -3,12 +3,17 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<<<<<<< HEAD
         <title>Image List</title>
+=======
+        <title>search page</title>
+>>>>>>> annibranch
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link rel="stylesheet" href="css/normalize.min.css">
+<<<<<<< HEAD
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
@@ -49,5 +54,87 @@
           <div id="lightbox"><!--upload lightbox--></div>
           
         <script src="js/main-search.js"></script>
+=======
+        <link rel="stylesheet" href="css/search.css">
+
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    </head>
+    <body>
+
+      <nav class="topnav">
+        <div class="menu-container" onclick="">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <a href="#homepage">home</a>
+        <div class="search-container">
+          <form action="">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </nav>
+
+      <div class="textbox">
+        <p class="results">N pictures found for 'santa'.</p>
+        <p class="tags">tag1 tag2 tag3 tag4</p>
+      </div>
+
+      <main>
+        <ul class="gallery">
+          <li>
+              <a href="img/pexels-photo-236586.jpeg"><img id="testupload" src="" alt="santaimg"></a>
+            </li>
+            <li>
+              <a href="img/pexels-photo-306864.jpeg"><img src="img/christmas-thumb-001.jpg" alt="santaimg"></a>
+            </li>
+            <li>
+              <a href="img/pexels-photo-383646.jpeg"><img src="img/christmas-thumb-002.jpg" alt="santaimg"></a>
+            </li>
+            <li>
+              <a href="img/pexels-photo-688010.jpeg"><img src="img/christmas-thumb-003.jpg" alt="santaimg"></a>
+            </li>
+            <li>
+              <a href="img/santa-claus-christmas-beard-celebration-41963.jpeg"><img src="img/christmas-thumb-004.jpg" alt="santaimg"></a>
+            </li>
+        </ul>
+      </main>
+
+      <button id="uploadButton">Upload</button>
+      <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+
+      <div id="uploadModal" class="hidden">
+        <a href="#" class="closeBtn">&#215;</a>
+        <form id="uploadForm" action="imgupload" enctype="multipart/form-data" method="post">
+          <input type="file" name="uploadedImg" accept="image/*">
+          <input type="text" placeholder="title" name="imgTitle">
+          <input type="text" placeholder="description" name="imgDesc">
+          <select name="tags" multiple="" class="ui-fluid-dropdown">
+            <option value="">Tags</option>
+            <option value="santa">santa</option>
+            <option value="reindeer">reindeer</option>
+            <option value="presents">presents</option>
+            <option value="snow">snow</option>
+            <option value="red">red</option>
+            <option value="candle">candle</option>
+            <option value="fireplace">fireplace</option>
+          </select>
+          <input type="submit" value="upload">
+        </form>
+
+
+      <div id="imgModal" class="hidden">
+        <a href="#" class="">&#215;</a>
+        <img src="" alt="">
+        <div class="post-container">
+            <p>info about the post</p>
+            <p>tags</p>
+            <div class="comments-container"></div>
+        </div>
+      </div>
+
+      <script src="js/search.js"></script>
+>>>>>>> annibranch
     </body>
 </html>

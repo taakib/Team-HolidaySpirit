@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign Up</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+<h1 id="signingtext">Sign Up</h1>
+
+<nav role="navigation">
+    <div id="menuToggle">
+
+        <input type="checkbox">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <ul id="menu">
+            <a href="#">
+                <li>Home</li>
+            </a>
+            <a href="#">
+                <li>About</li>
+            </a>
+            <a href="#">
+                <li>Info</li>
+            </a>
+            <a href="#">
+                <li>Contact</li>
+            </a>
+            <a href="#" target="_blank">
+                <li>Show me more</li>
+            </a>
+        </ul>
+    </div>
+</nav>
+
+<form method="post" action="db/service/register" novalidate>
+    <!-- your input elements here -->
+    <div class="validform">
+        Username*:<br>
+        <input type="text" name="username" required pattern=".{3,}" placeholder="3 or more characters"><br>
+        <p class="formerror">Form is incorrect</p>
+        Password*:<br>
+        <input type="password" name="password" pattern=".{6,}" placeholder="Six or more characters" required><br>
+        <input type="submit" value="Submit" id="submitBtn">
+    </div>
+
+</form>
+
+<script src="js/signup.js"></script>
+</body>
+
+</html>
