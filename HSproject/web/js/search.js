@@ -79,9 +79,7 @@ const biggerImgs = () => {
 
 //upload img function
 const upload = (evt) => {
-  //prevents the form from sending
   evt.preventDefault();
-  //selects the file input field
   const input = document.querySelector('input[type="file"]');
   //makes FormData -object and adds the file selected byt the user into the object
   const data = new FormData();
