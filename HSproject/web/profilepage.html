@@ -56,45 +56,58 @@
     <!-- add settings button for deleting account, right top corner,
     and favourites + upload buttons below profile name ? something like this -->
 
-    <main class="secondary-color">
+    <nav id="profilenav">
+        <a class="tablinks" id="uploadtab" href="#photoarea">Uploads</a>
+        <a class="tablinks" id="favoritetab" href="#favorites">Favorites</a>
+    </nav>
 
-        <ul>
-            <!-- HTML made with JS goes here -->
+    <div class="uploads">
 
-        </ul>
-    </main>
-    <section id="photoarea" class="default">
-       <!-- <p>Photos</p>
-        <p>here</p>-->
-        <!--do something here, check modal   -->
+        <main class="secondary-color">
 
-        <a href="#" class="hidden" id="closeBtn">&#215;</a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
+            <ul>
+                <!-- HTML made with JS goes here -->
+            </ul>
+        </main>
 
-    </section>
+        <section id="photoarea" class="default">
+            <!-- <p>Photos</p>
+             <p>here</p>-->
+            <!--do something here, check modal   -->
+
+            <a href="#" class="hidden" id="closeBtn">&#215;</a>
+            <a href="img/santa-claus3.jpg">
+                <img src="img/santa-claus3.jpg">
+            </a>
+            <a href="img/santa-claus3.jpg">
+                <img src="img/santa-claus3.jpg">
+            </a>
+            <a href="img/santa-claus3.jpg">
+                <img src="img/santa-claus3.jpg">
+            </a>
+            <a href="img/santa-claus3.jpg">
+                <img src="img/santa-claus3.jpg">
+            </a>
+            <a href="img/santa-claus3.jpg">
+                <img src="img/santa-claus3.jpg">
+            </a>
+            <a href="img/santa-claus3.jpg">
+                <img src="img/santa-claus3.jpg">
+            </a>
+            <a href="img/santa-claus3.jpg">
+                <img src="img/santa-claus3.jpg">
+            </a>
+            <a href="img/santa-claus3.jpg">
+                <img src="img/santa-claus3.jpg">
+            </a>
+
+        </section>
+    </div>
+
+    <div class="favorites" style="display: none" id="favorites">
+        <!-- insert here favorites from database-->
+        <p>Hey, here are your favorites!</p>
+    </div>
 
     <button id="uploadButton">Upload</button>
     <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
@@ -110,11 +123,11 @@
         </form>
     </div>
 
-<!--
-    <div id="modal" class="hidden">
-        <a href="#" class="closeBtn">&#215;</a>
-        <img>
-    </div> -->
+    <!--
+        <div id="modal" class="hidden">
+            <a href="#" class="closeBtn">&#215;</a>
+            <img>
+        </div> -->
 </div>
 <script src="js/profile.js"></script>
 <script src="js/search.js"></script>

@@ -309,3 +309,25 @@ aside {
     height: auto;
     padding: 5px;
 }
+
+#profilenav {
+    text-align: center;
+    margin: 10px auto;
+    font-size: x-large;
+    width: 90%;
+    background-color: red;
+}
+#profilenav a {
+    background-color: lightcyan;
+}
+
+#profilenav a:hover {
+    background-color: #2196F3;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#profilenav a.active {
+    background-color: #2196F3;
+}

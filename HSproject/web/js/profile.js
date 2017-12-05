@@ -78,8 +78,6 @@ closeButton.addEventListener('click', (evt) => {
 //this is for the image testing before getting images from database.
 //try to get pictures from the page to open in modal/lightbox
 
-
-
 const photoArea = document.querySelector('#photoarea');
 const linkActions = () => {
     const a = document.querySelector('section').querySelectorAll('a');
@@ -104,3 +102,33 @@ const closeButton = document.querySelector('.closeBtn');
 closeButton.addEventListener('click', (evt) => {
     photoArea.classList.replace('lightboxi', 'hidden');
 });
+
+
+
+
+//here to make tabs working
+//favorites and uploads tab
+
+//also set tablinks to be active when clicked and removed when clicked something else
+const favoriteTab = document.querySelector('#favoritetab');
+const photoTab = document.querySelector('#uploadtab');
+const uploadedPhotos = document.getElementById('photoarea');
+const favoritedPhotos = document.getElementById('favorites');
+
+favoriteTab.addEventListener('click', (evt) => {
+    //console.log("clicked " + evt);
+    //id favorites show display block
+    favoritedPhotos.setAttribute('style', 'display:block');
+    favoriteTab.classList.replace('tablinks', 'active');
+    photoTab.classList.replace('active', 'tablinks');
+    //id photoarea dispaly none
+    uploadedPhotos.setAttribute('style', 'display:none');
+});
+
+photoTab.addEventListener('click', (evt) => {
+    favoritedPhotos.setAttribute('style', 'display:none');
+    uploadedPhotos.setAttribute('style', 'display:block');
+    photoTab.classList.replace('tablinks', 'active');
+    favoriteTab.classList.replace('active', 'tablinks');
+});
+
