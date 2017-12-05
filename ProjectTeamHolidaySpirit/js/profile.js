@@ -82,8 +82,8 @@ closeButton.addEventListener('click', (evt) => {
 
 const photoArea = document.querySelector('#photoarea');
 const linkActions = () => {
-    //const a = document.querySelector('ul').querySelectorAll('a');
-    const a = document.querySelectorAll('a');
+    const a = document.querySelector('section').querySelectorAll('a');
+    //const a = document.querySelector('a');
     //const img = document.querySelectorAll('img');
     a.forEach((link) => {
         link.addEventListener('click', (evt) => {
