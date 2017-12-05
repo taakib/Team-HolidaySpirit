@@ -47,7 +47,7 @@ const fetchImages = () => {
   });
 };*/
 
-/*img lightbox
+/*img gallery lightbox
 const biggerImgs = () => {
   //select all a elements inside ul
   const links = document.querySelector('ul').querySelectorAll('a');
@@ -98,9 +98,17 @@ const upload = (evt) => {
     //when file upload is complete, user server response to display uploaded image
     console.log(json);
     document.querySelector('#testupload').src = json.src;
+    const upModal = document.querySelector('#uploadModal');
+    upModal.classList.replace('lightbox-upload', 'hidden');
+    const imgModal = document.querySelector('#imgModal');
+    imgModal.querySelector('img').src = json.src;
+    imgModal.classList.replace('hidden', 'lightbox-img');
+    const closeButton = document.querySelector('#imgModal').querySelector('.closeBtn');
+    //when close button is clicked hide modal
+    closeButton.addEventListener('click', (evt) => {
+        imgModal.classList.replace('lightbox-img', 'hidden');
+    });
   });
-  const modal = document.querySelector('#uploadModal');
-  modal.classList.replace('lightbox-upload', 'hidden');
 };
 
 // make an event listener which calls upload function when the form is submitted
