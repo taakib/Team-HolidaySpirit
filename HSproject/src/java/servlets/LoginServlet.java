@@ -8,6 +8,7 @@ package servlets;
 import controller.DBController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -83,10 +84,10 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        User user = dbc.find(username, password);
+        List<User> userList = dbc.findLoginCredentials(username, password);
 
-        if (user != null) {
-            request.getSession().setAttribute("user", user);
+        if (userList != null) {
+            request.getSession().setAttribute("user", userList);
             response.sendRedirect("home");
         }
         else {
