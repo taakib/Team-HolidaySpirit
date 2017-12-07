@@ -62,4 +62,8 @@ public class DBController {
         em.persist(f);
         return f;
     }
+
+    public List<User> findLoginCredentials(String username, String password) {
+        return em.createNamedQuery("User.findByLoginCredentials").getResultList();
+    }
 }
