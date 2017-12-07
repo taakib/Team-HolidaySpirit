@@ -43,19 +43,18 @@ public class ImgUpload extends HttpServlet {
         response.addHeader("Access-Control-Allow-Origin", "*");
         response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
         response.setContentType("application/json");
-   
-            try (PrintWriter out = response.getWriter()) {
-            //save img to the server
+        try (PrintWriter out = response.getWriter()) {
+            //rename files so they are not overwritten 
             Post p = new Post();
-            request.getPart("uploadedImg").write(request.getPart("uploadedImg").getSubmittedFileName());
-            p.setSourceUrl("//10.114.34.129/uploads/" + request.getPart("uploadedImg").getSubmittedFileName());
+            p.setSourceUrl("//10.114.34.129/uploads/" + request.getPart("imgfile").getSubmittedFileName());
             p.setTitle(request.getParameter("imgTitle"));
             p.setDescription(request.getParameter("imgDesc"));
             //p.setTagsCollection(tags);
-            //p.setUploaderId(uploaderID); get id from cookies
+            //p.setUploaderId(uploaderID); get id from cookies?
             dbc.insertPost(p);
+            request.getPart("imgfile").write(request.getPart("imgfile").getSubmittedFileName());
+            out.print("{\"src\" : \"//10.114.34.129/uploads/" + request.getPart("imgfile").getSubmittedFileName() +"\"}");
         }   
-        
     }
     
     @Override

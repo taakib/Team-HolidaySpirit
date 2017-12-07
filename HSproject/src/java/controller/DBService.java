@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 import javax.ejb.EJB;
+import javax.persistence.EntityManager;
 import javax.servlet.annotation.MultipartConfig;
 import javax.ws.rs.Produces;
 import javax.ws.rs.FormParam;
@@ -28,7 +29,7 @@ public class DBService {
     
     @EJB
     private DBController dbc;
-
+   
     public DBService() {
     }
   
@@ -82,22 +83,18 @@ public class DBService {
     @POST
     @Path("register")
     @Produces(MediaType.APPLICATION_JSON)
-    public void postUserRegister(@FormParam("username") String name, @FormParam("password") String password) {
-        List<User> users = dbc.getAllUsers();
-        for (User u : users){
-            if (u.getUsername().contains(name)) {
-                //return an error to the client side
-                System.out.println("username already exists");
-            } else {
-                User userNew = new User();
-                userNew.setUsername(name);
-                userNew.setPasswd(password);
-                dbc.insertUser(userNew);
-            }
+    public Response register(@FormParam("username") String name, @FormParam("password") String password) {
+        if (dbc.findUsername(name) != null){
+            //if username exists return an error message to the client
+            return Response.noContent().build();
+        } else {
+            
         }
+        //return Response.ok().entity(entity).build();
+        return null;
     }
     
-    @POST
+    /*@POST
     @Path("login")
     @Produces(MediaType.APPLICATION_JSON)
     public void postUserLogIn(@FormParam("username") String name, @FormParam("password") String password) {
@@ -112,12 +109,12 @@ public class DBService {
                 //u.setLoggedIn(loggedIn);
             }
         }
-    }
+    }*/
     
     @POST
     @Path("logout")
     @Produces(MediaType.APPLICATION_JSON)
-    public Post postUserLogOut() {
+    public Response logOut() {
         return null;
     }
    

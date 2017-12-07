@@ -62,3 +62,13 @@ form.addEventListener('submit', (evt) => {
         form.submit();
     }
 });
+
+/*
+ * author: anniluo
+ */
+//return a response if the username is taken
+const checkName = () => {
+    const responseText = document.querySelector("#response");
+    responseText.innerHTML = ("username is taken.");
+    responseText.classList.replace("hidden", ""); 
+};
