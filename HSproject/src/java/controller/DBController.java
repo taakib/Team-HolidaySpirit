@@ -63,11 +63,11 @@ public class DBController {
         return f;
     }
 
-    public List<User> findLoginCredentials(String username, String password) {
-        return em.createNamedQuery("User.findByLoginCredentials").getResultList();
+    public List<User> findLoginCredentials(String username, String password){
+        return em.createNamedQuery("User.findByLoginCredentials").setParameter("username", username).setParameter("passwd", password).getResultList();
     }
 
-    public List<User> findUsername(String username){
-        return em.createNamedQuery("User.findByUsername").getResultList();
+    public List<User> findUsername(String name){
+        return em.createNamedQuery("User.findByUsername").setParameter("username", name).getResultList();
     }
 }
