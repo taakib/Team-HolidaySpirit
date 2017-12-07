@@ -70,5 +70,6 @@ public class DBController {
     public List<User> findUsername(String name){
         return em.createNamedQuery("User.findByUsername").setParameter("username", name).getResultList();
     }
+    
 }
 

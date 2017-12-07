@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         List<User> userList = dbc.findLoginCredentials(username, password);
 
-        if (userList != null) {
+        if (userList.size() > 0) {
             request.getSession().setAttribute("userList", userList);
             response.sendRedirect("home");
         }

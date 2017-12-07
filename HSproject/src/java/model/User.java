@@ -41,12 +41,11 @@ public class User implements Serializable {
 
     @Column(name = "user_level")
     private Integer userLevel;
-    @Size(max = 200)
-    @Column(name = "img_url")
+    //@Size(max = 200)
+    @Column(name = "img_url", length = 200)
     private String imgUrl;
     @OneToMany(mappedBy = "commenterId")
     private Collection<Comments> commentsCollection;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

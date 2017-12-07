@@ -83,39 +83,23 @@ public class DBService {
     @POST
     @Path("register")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response register(@FormParam("username") String name, @FormParam("password") String password) {
-        Response r;
-        if (dbc.findUsername(name) != null){
-            //if username exists return an error message to the client
-            r = Response.noContent().build();
-        } else {
-            User u = new User();
-            u.setUsername(name);
-            //hash password
-            u.setPasswd(password);
-            dbc.insertUser(u);
-            r = Response.ok().build();
-        }
+    public String register(@FormParam("username") String name, @FormParam("password") String password) {
+        String r;
+            if (dbc.findUsername(name).size() > 0){
+                //if username exists return an error message to the client
+                r = "username is taken";
+            } else {
+                User u = new User();
+                u.setUsername(name);
+                //hash password
+                u.setPasswd(password);
+                dbc.insertUser(u);
+                r = "new user created";
+            }
+        
         return r;
     }
-    
-    /*@POST
-    @Path("login")
-    @Produces(MediaType.APPLICATION_JSON)
-    public void postUserLogIn(@FormParam("username") String name, @FormParam("password") String password) {
-        List <User> users = dbc.getAllUsers();
-        for (User u : users){
-            if (!u.getUsername().equals(name)) {
-                //return an error message for the client
-                System.out.println("username doesn't exist");
-            } else {
-                //create a session id?
-                //what to do here? <o>
-                //u.setLoggedIn(loggedIn);
-            }
-        }
-    }*/
-    
+     
     @POST
     @Path("logout")
     @Produces(MediaType.APPLICATION_JSON)
