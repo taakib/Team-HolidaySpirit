@@ -2,7 +2,6 @@ package controller;
 
 import java.util.List;
 import javax.ejb.EJB;
-import javax.persistence.EntityManager;
 import javax.servlet.annotation.MultipartConfig;
 import javax.ws.rs.Produces;
 import javax.ws.rs.FormParam;
@@ -85,9 +84,11 @@ public class DBService {
     @Produces(MediaType.APPLICATION_JSON)
     public String register(@FormParam("username") String name, @FormParam("password") String password) {
         String r;
-            if (dbc.findUsername(name).size() > 0){
+            if (dbc.findUser(name).size() > 0){
                 //if username exists return an error message to the client
                 r = "username is taken";
+                System.out.println(dbc.getUserIdByName(name));
+                
             } else {
                 User u = new User();
                 u.setUsername(name);

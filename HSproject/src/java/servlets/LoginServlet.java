@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.NewCookie;
 import model.User;
 
 /**
@@ -72,10 +73,9 @@ public class LoginServlet extends HttpServlet {
         List<User> userList = dbc.findLoginCredentials(username, password);
 
         if (userList.size() > 0) {
-            request.getSession().setAttribute("userList", userList);
+            request.getSession().setAttribute("userList", userList); 
             response.sendRedirect("home");
-        }
-        else {
+        } else {
             request.setAttribute("error", "Unknown user, please try again");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
         }
