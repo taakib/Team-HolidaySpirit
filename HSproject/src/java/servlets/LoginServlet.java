@@ -37,22 +37,7 @@ public class LoginServlet extends HttpServlet {
     @EJB
     private DBController dbc;
     
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+ 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -87,7 +72,7 @@ public class LoginServlet extends HttpServlet {
         List<User> userList = dbc.findLoginCredentials(username, password);
 
         if (userList != null) {
-            request.getSession().setAttribute("user", userList);
+            request.getSession().setAttribute("userList", userList);
             response.sendRedirect("home");
         }
         else {
