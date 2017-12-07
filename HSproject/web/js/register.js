@@ -50,7 +50,7 @@ const checkPattern = (element) => {
 
 checkAttribute(inputs, 'required', checkEmpty);
 
-const form = document.querySelector('form');
+const form = document.querySelector('#registerForm');
 
 form.addEventListener('submit', (evt) => {
     evt.preventDefault();
@@ -59,16 +59,35 @@ form.addEventListener('submit', (evt) => {
     checkAttribute(inputs, 'pattern', checkPattern);
     console.log(formOK);
     if (formOK===-4){
-        form.submit();
+        checkName(); 
     }
 });
 
 /*
  * author: anniluo
  */
+
 //return a response if the username is taken
 const checkName = () => {
-    const responseText = document.querySelector("#response");
-    responseText.innerHTML = ("username is taken.");
-    responseText.classList.replace("hidden", ""); 
+    const nameInput = document.querySelector('input[name="username"]');
+    const data = new FormData(form);
+    const settings = {
+        method: 'POST',
+        credentials: 'same-origin', // this might be needed for some servers
+        body: data
+     };
+     fetch('//10.114.34.129:8080/HSproject/db/service/register', settings).then((response) => {
+        return response.json();
+     }).then((json) => {
+            const responseText = document.querySelector('#response');
+            if(json.toString() === "username is taken") {
+                console.log(json);
+                responseText.innerHTML = json.toString();
+            } else {
+               responseText.innerHTML = json.toString();
+               form.submit(); 
+           }
+        });
+ 
+    //responseText.classList.replace('hidden', ''); 
 };
