@@ -84,14 +84,19 @@ public class DBService {
     @Path("register")
     @Produces(MediaType.APPLICATION_JSON)
     public Response register(@FormParam("username") String name, @FormParam("password") String password) {
+        Response r;
         if (dbc.findUsername(name) != null){
             //if username exists return an error message to the client
-            return Response.noContent().build();
+            r = Response.noContent().build();
         } else {
-            
+            User u = new User();
+            u.setUsername(name);
+            //hash password
+            u.setPasswd(password);
+            dbc.insertUser(u);
+            r = Response.ok().build();
         }
-        //return Response.ok().entity(entity).build();
-        return null;
+        return r;
     }
     
     /*@POST
