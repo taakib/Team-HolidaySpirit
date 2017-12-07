@@ -50,8 +50,8 @@ public class ImgUpload extends HttpServlet {
             p.setTitle(request.getParameter("imgTitle"));
             p.setDescription(request.getParameter("imgDesc"));
             //p.setTagsCollection(tags);
-            //p.setUploaderId(uploaderID); get id from cookies
-            dbc.insertPost(p);   
+            //p.setUploaderId(uploaderID); get id from cookies?
+            dbc.insertPost(p);
             request.getPart("imgfile").write(request.getPart("imgfile").getSubmittedFileName());
             out.print("{\"src\" : \"//10.114.34.129/uploads/" + request.getPart("imgfile").getSubmittedFileName() +"\"}");
         }   

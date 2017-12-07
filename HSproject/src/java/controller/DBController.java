@@ -62,4 +62,8 @@ public class DBController {
         em.persist(f);
         return f;
     }
+    
+    public List<User> findUsername(String username){
+        return em.createNamedQuery("User.findByUsername").getResultList();
+    }
 }
