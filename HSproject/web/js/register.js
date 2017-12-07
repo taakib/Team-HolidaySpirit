@@ -68,7 +68,8 @@ form.addEventListener('submit', (evt) => {
  */
 
 //return a response if the username is taken
-const checkName = () => {
+const checkName = (evt) => {
+    evt.preventDefault();
     const nameInput = document.querySelector('input[name="username"]');
     const data = new FormData(form);
     const settings = {
