@@ -64,7 +64,10 @@ public class DBController {
     }
     
     public List<User> findLoginCredentials(String username, String password){
-        return em.createNamedQuery("User.findByLoginCredentials").setParameter("username", username).setParameter("passwd", password).getResultList();
+        return em.createNamedQuery("User.findByLoginCredentials")
+                .setParameter("username", username)
+                .setParameter("passwd", password)
+                .getResultList();
     }
     
     public List<User> findUser(String name){
@@ -79,6 +82,7 @@ public class DBController {
         }
         return userId;
     }
+    
     
 }
 
