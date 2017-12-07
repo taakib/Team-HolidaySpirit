@@ -50,18 +50,17 @@
 
 <form method="post" action="db/service/register" novalidate>
     <!-- your input elements here -->
-    <div class="validform">
+    <div id="registerForm" class="validform">
         Username*:<br>
         <input type="text" name="username" required pattern=".{3,}" placeholder="3 or more characters"><br>
-        <p class="formerror">Form is incorrect</p>
         Password*:<br>
         <input type="password" name="password" pattern=".{6,}" placeholder="Six or more characters" required><br>
         <input type="submit" value="Submit" id="submitBtn">
     </div>
-    <p id="response" class="hidden"></p>
+    <p id="response" class=""></p>
 </form>
 
-<script src="js/signup.js"></script>
+<script src="js/register.js"></script>
 </body>
 
 </html>

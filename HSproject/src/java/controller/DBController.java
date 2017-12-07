@@ -67,7 +67,17 @@ public class DBController {
         return em.createNamedQuery("User.findByLoginCredentials").setParameter("username", username).setParameter("passwd", password).getResultList();
     }
 
-    public List<User> findUsername(String name){
+    public List<User> findUser(String name){
         return em.createNamedQuery("User.findByUsername").setParameter("username", name).getResultList();
     }
+
+    public int getUserIdByName(String name) {
+        List<User> usernames = em.createNamedQuery("User.findByUsername").setParameter("username", name).getResultList();
+        int userId = 0;
+        for (User u : usernames){
+            userId = u.getId();
+        }
+        return userId;
+    }
+
 }

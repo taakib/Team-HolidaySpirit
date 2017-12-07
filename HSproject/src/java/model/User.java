@@ -35,17 +35,17 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByReqDate", query = "SELECT u FROM User u WHERE u.reqDate = :reqDate")
     , @NamedQuery(name = "User.findByUserLevel", query = "SELECT u FROM User u WHERE u.userLevel = :userLevel")
     , @NamedQuery(name = "User.findByLoggedIn", query = "SELECT u FROM User u WHERE u.loggedIn = :loggedIn")
+    , @NamedQuery(name = "User.findByLoginCredentials", query = "SELECT u FROM User u WHERE u.username = :username AND u.passwd = :passwd")
     , @NamedQuery(name = "User.findByLoggedOut", query = "SELECT u FROM User u WHERE u.loggedOut = :loggedOut")})
 public class User implements Serializable {
 
     @Column(name = "user_level")
     private Integer userLevel;
-    @Size(max = 200)
-    @Column(name = "img_url")
+    //@Size(max = 200)
+    @Column(name = "img_url", length = 200)
     private String imgUrl;
     @OneToMany(mappedBy = "commenterId")
     private Collection<Comments> commentsCollection;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -96,7 +96,7 @@ public class User implements Serializable {
     public String getUsername() {
         return username;
     }
-
+    
     public void setUsername(String username) {
         this.username = username;
     }

@@ -1,3 +1,4 @@
+'use strict';
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = () => {
     scrollFunction();
@@ -113,3 +114,4 @@ const upload = (evt) => {
 
 // make an event listener which calls upload function when the form is submitted
 document.querySelector('#uploadForm').addEventListener('submit', upload);
+

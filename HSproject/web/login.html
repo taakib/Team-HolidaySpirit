@@ -48,14 +48,15 @@
     </div>
 </nav>
 
-<form method="post" action="db/service/login" novalidate>
+<form method="post" action="login" novalidate>
     <!-- your input elements here -->
     <div class="validform">
         Username:<br>
         <input type="text" name="username" required pattern=".{3,}" placeholder="username"><br>
         Password:<br>
         <input type="password" name="password" pattern=".{6,}" placeholder="password" required><br>
-        <input type="submit" value="Submit" id="submit">
+        <input type="submit" value="login" id="submitBtn">
+        <span class="error">${error}</span>
     </div>
 
 </form>

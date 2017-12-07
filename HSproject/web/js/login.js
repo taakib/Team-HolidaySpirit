@@ -24,7 +24,6 @@ const checkEmpty = (element) => {
         formOK ++;
         element.setAttribute('style', 'border: red solid 1px');
         //element.setAttribute('p', 'display: block');
-        //element.classList.replace('formerror', 'visible');
         //modern browsers:
         //element.style = border:"red solid 1px";
     }
@@ -34,17 +33,16 @@ const checkEmpty = (element) => {
     }
 };
 
-
 const checkPattern = (element) => {
-  const pattern = new RegExp(element.getAttribute('pattern'), 'i');
-  const value = element.value;
-  if (!pattern.exec(value)){
-      formOK++;
-      element.setAttribute('style', 'border: yellow solid 1px');
-  }else {
-      formOK--;
-      element.removeAttribute('style');
-  }
+    const pattern = new RegExp(element.getAttribute('pattern'), 'i');
+    const value = element.value;
+    if (!pattern.exec(value)){
+        formOK++;
+        element.setAttribute('style', 'border: yellow solid 1px');
+    }else {
+        formOK--;
+        element.removeAttribute('style');
+    }
 };
 
 
@@ -58,17 +56,15 @@ form.addEventListener('submit', (evt) => {
     checkAttribute(inputs, 'required', checkEmpty);
     checkAttribute(inputs, 'pattern', checkPattern);
     console.log(formOK);
+    //match database's user
     if (formOK===-4){
         form.submit();
+        checkSession();
     }
 });
 
-/*
- * author: anniluo
- */
-//return a response if the username is taken
-const checkName = () => {
-    const responseText = document.querySelector("#response");
-    responseText.innerHTML = ("username is taken.");
-    responseText.classList.replace("hidden", ""); 
+
+//check session id
+const checkSession = (data) => {
+    console.log(data);
 };
