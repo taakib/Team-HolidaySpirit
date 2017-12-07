@@ -114,3 +114,4 @@ const upload = (evt) => {
 
 // make an event listener which calls upload function when the form is submitted
 document.querySelector('#uploadForm').addEventListener('submit', upload);
+

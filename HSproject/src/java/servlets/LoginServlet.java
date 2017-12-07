@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 
         if (userList.size() > 0) {
             request.getSession().setAttribute("userList", userList); 
-            response.sendRedirect("home");
+            response.sendRedirect("search.html");
         } else {
             request.setAttribute("error", "Unknown user, please try again");
             request.getRequestDispatcher("/login.jsp").forward(request, response);
