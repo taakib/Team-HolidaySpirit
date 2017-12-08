@@ -36,11 +36,11 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
+
     @EJB
     private DBController dbc;
-    
- 
+
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
+
     /*@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     Product product = productService.find(request.getParameter("id"));
@@ -78,17 +78,13 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("userList", userList);
             HttpSession session = request.getSession();
             session.setAttribute(username, dbc.getUserIdByName(username));
-<<<<<<< HEAD
             //setting session to expire in 3 mins
             session.setMaxInactiveInterval(3*60);
             Cookie cookie = new Cookie("authentication", username);
             cookie.setMaxAge(60 * 1);
             response.addCookie(cookie);
-            request.getSession().setAttribute("userList", userList); 
+            request.getSession().setAttribute("userList", userList);
             response.sendRedirect("login.html");
-=======
-            response.sendRedirect("search.html");
->>>>>>> annibranch
         } else {
             request.setAttribute("error", "Unknown user, please try again");
             request.getRequestDispatcher("/login.html").forward(request, response);

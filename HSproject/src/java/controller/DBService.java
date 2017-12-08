@@ -67,8 +67,8 @@ public class DBService {
        session.invalidate();
        return Response.ok("Session ended").build();
     }
-    
-    
+
+
 
     @GET
     @Path("post")
@@ -89,14 +89,8 @@ public class DBService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Tags> getTagsJson() {
         return dbc.getAllTags();
-<<<<<<< HEAD
-    } 
-    
-    
-=======
     }
 
->>>>>>> annibranch
     @GET
     @Path("favourites")
     @Produces(MediaType.APPLICATION_JSON)
