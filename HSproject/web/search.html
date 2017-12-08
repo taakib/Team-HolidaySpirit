@@ -10,17 +10,25 @@
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/search.css">
+        <link rel="stylesheet" href="css/menu.css"/>
 
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     </head>
     <body>
 
       <nav class="topnav">
-        <div class="menu-container" onclick="">
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
-        </div>
+        <div id="menuToggle">
+        <input type="checkbox">
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+                        <a href="index.html"><li>Home</li></a>
+                        <a href="login.html"><li>Login!</li></a>
+                        <a href="register.html"><li>Register!</li></a>
+                        <a href="info.html"><li>Info!</li></a>
+                    </ul>
+    </div>
         <a href="#homepage">home</a>
         <div class="search-container">
           <form action="">

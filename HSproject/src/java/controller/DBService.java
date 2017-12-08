@@ -3,8 +3,10 @@ package controller;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.CookieParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -37,7 +39,7 @@ public class DBService {
 
     public DBService() {
     }
-
+    
     @POST
     @Path("register")
     @Produces(MediaType.APPLICATION_JSON)
@@ -97,6 +99,15 @@ public class DBService {
     public List<Favourites> getFavsJson() {
         return dbc.getAllFavs();
     }
+    
+    @GET
+    @Path("id")
+    @Produces(MediaType.TEXT_HTML)
+    public int getId(String name) {
+        return dbc.getUserIdByName(name);
+    }
+    
+    
     @POST
     @Path("favourites")
     @Produces(MediaType.APPLICATION_JSON)

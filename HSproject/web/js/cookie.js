@@ -26,9 +26,9 @@ const cookie = () => {
     
     if (checkAuth !== null) {
         let username = getCookie('authentication');
-        user_name.innerHTML = 'Hello ' + username;
+        //username.innerHTML = 'Hello ' + username;
     } else {
-        alert("Session expired, please re-login");
+        alert("No activity within 1440 seconds; please log in again.");
         window.location.replace("login.html");
     }
 };
@@ -41,4 +41,19 @@ const logout = () => {
     let checkAuth = getCookie("auth");
     
     checkAuth = null;
+};
+
+const cookieId = (evt) => {
+    evt.preventDefault();
+    const settings = {
+        method: 'GET',
+        credentials: 'same-origin', // # ILE
+        body: data
+    };
+    fetch('//10.114.34.129:8080/HSproject/db/service/id', settings).then((response) => {
+        return response.text();
+    }).then((text) => {
+        console.log(text);
+        
+    });  
 };

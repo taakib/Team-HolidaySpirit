@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String password = request.getParameter("password"); 
         List<User> userList = dbc.findLoginCredentials(username, password);
 
         if (userList.size() > 0) {
@@ -84,7 +84,7 @@ public class LoginServlet extends HttpServlet {
             cookie.setMaxAge(60 * 1);
             response.addCookie(cookie);
             request.getSession().setAttribute("userList", userList);
-            response.sendRedirect("login.html");
+            response.sendRedirect("search.html");
         } else {
             request.setAttribute("error", "Unknown user, please try again");
             request.getRequestDispatcher("/login.html").forward(request, response);
