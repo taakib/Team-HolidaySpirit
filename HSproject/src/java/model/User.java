@@ -75,7 +75,6 @@ public class User implements Serializable {
     private Collection<Post> postCollection;
 
     public User() {
-        //this.reqDate = reqDate;
         //this.userLevel = userLevel;
     }
 
