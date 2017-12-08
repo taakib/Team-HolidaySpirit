@@ -1,7 +1,6 @@
 package servlets;
 
 import controller.DBController;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -51,18 +50,16 @@ public class ImgUpload extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             //rename files so they are not overwritten
             Date d = new Date();
-            //int userid = get from cookie
-            File img = new File(request.getPart("imgfile").getSubmittedFileName());
-            File img2 = new File("//10.114.34.129/uploads/" + d + request.getPart("imgfile").getSubmittedFileName());
-            img.renameTo(img2);
+            request.getPart("imgfile").write(d.toString() + request.getPart("imgfile").getSubmittedFileName());
             Post p = new Post();
-            p.setSourceUrl("//10.114.34.129/uploads/" + d + request.getPart("imgfile").getSubmittedFileName());
+            p.setSourceUrl("//10.114.34.129/uploads/" + d.toString() + request.getPart("imgfile").getSubmittedFileName());
             p.setTitle(request.getParameter("imgTitle"));
             p.setDescription(request.getParameter("imgDesc"));
             //p.setTagsCollection(tagsCollection);
             //p.setUploaderId(session.);
             dbc.insertPost(p);
-            out.print("{\"src\" : \"//10.114.34.129/uploads/" + d + request.getPart("imgfile").getSubmittedFileName() + "\"}");
+            out.print("{\"src\" : \"//10.114.34.129/uploads/" + d.toString() + request.getPart("imgfile").getSubmittedFileName() +"\"}");
+            //out.print("{\"src\" :" + p.getSourceUrl() +"\"}");
         }   
     }
     
