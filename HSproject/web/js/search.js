@@ -17,18 +17,10 @@ const topFunction = () => {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera 
 };
 
-
-//upload lightbox
-const uploadBtn = document.querySelector('#uploadButton');
-uploadBtn.addEventListener('click',(evt) => {
-  evt.preventDefault();
-  const modal = document.querySelector('#uploadModal');
-  modal.classList.replace('hidden', 'lightbox-upload');
-  const closeButton = document.querySelector('.closeBtn');
-  closeButton.addEventListener('click', (evt) => {
-    modal.classList.replace('lightbox-upload', 'hidden');
-  });
-});
+//search function
+const search = () => {
+    
+};
 
 /*fetch imgs from server
 const fetchImages = () => {

@@ -67,6 +67,8 @@ public class DBService {
        session.invalidate();
        return Response.ok("Session ended").build();
     }
+    
+    
 
     @GET
     @Path("post")

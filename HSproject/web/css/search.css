@@ -159,12 +159,10 @@ main {
   width: 100%;
 }
 
-main ul {
+.gallery {
   list-style-type: none;
-  padding: 0;
-  flex-wrap: wrap;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .gallery li {
@@ -177,22 +175,22 @@ main ul {
 }
 
 #topBtn {
-  display: none; 
-  position: fixed; 
-  bottom: 20px; 
-  right: 50%; 
-  z-index: 99; 
-  border: none; 
-  outline: none; 
-  background-color: red; 
-  color: white; 
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 50%;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
   cursor: pointer;
   padding: 15px;
-  border-radius: 10px; 
+  border-radius: 10px;
 }
 
 #topBtn:hover {
-  background-color: #555; 
+  background-color: #555;
 }
 
 #uploadButton {
@@ -244,7 +242,7 @@ main ul {
 }
 
 .ui-fluid-dropdown {
-    
+
 }
 
 .lightbox-img {
@@ -272,7 +270,7 @@ main ul {
 }
 
 .closeBtn {
-    
+
 }
 /* ==========================================================================
    Media Queries
