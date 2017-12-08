@@ -78,6 +78,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("userList", userList);
             HttpSession session = request.getSession();
             session.setAttribute(username, dbc.getUserIdByName(username));
+<<<<<<< HEAD
             //setting session to expire in 3 mins
             session.setMaxInactiveInterval(3*60);
             Cookie cookie = new Cookie("authentication", username);
@@ -85,6 +86,9 @@ public class LoginServlet extends HttpServlet {
             response.addCookie(cookie);
             request.getSession().setAttribute("userList", userList); 
             response.sendRedirect("login.html");
+=======
+            response.sendRedirect("search.html");
+>>>>>>> annibranch
         } else {
             request.setAttribute("error", "Unknown user, please try again");
             request.getRequestDispatcher("/login.html").forward(request, response);

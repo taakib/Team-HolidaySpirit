@@ -28,16 +28,16 @@ import model.FavouritesPK;
 @Path("service")
 @MultipartConfig(location = "/var/www/html/uploads")
 public class DBService {
-    
+
     @Context
     private HttpServletRequest request;
-    
+
     @EJB
     private DBController dbc;
-   
+
     public DBService() {
     }
-     
+
     @POST
     @Path("register")
     @Produces(MediaType.APPLICATION_JSON)
@@ -47,7 +47,7 @@ public class DBService {
                 //if username exists return an error message to the client
                 r = "username is taken";
                 System.out.println(dbc.getUserIdByName(name));
-                
+
             } else {
                 User u = new User();
                 u.setUsername(name);
@@ -58,38 +58,45 @@ public class DBService {
             }
         return r;
     }
-       
+
     @POST
-    @Path("logout")    
+    @Path("logout")
     @Produces(MediaType.APPLICATION_JSON)
     public Response logOut() {
        HttpSession session = request.getSession();
        session.invalidate();
        return Response.ok("Session ended").build();
     }
-   
+    
+    
+
     @GET
     @Path("post")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Post> getPostJson() {
         return dbc.getAllPosts();
     }
-    
+
     @POST
     @Path("post")
     @Produces(MediaType.APPLICATION_JSON)
     public Post postPost() {
         return null;
     }
-    
+
     @GET
     @Path("tags")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Tags> getTagsJson() {
         return dbc.getAllTags();
+<<<<<<< HEAD
     } 
     
     
+=======
+    }
+
+>>>>>>> annibranch
     @GET
     @Path("favourites")
     @Produces(MediaType.APPLICATION_JSON)
