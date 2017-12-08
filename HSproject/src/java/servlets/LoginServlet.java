@@ -83,7 +83,8 @@ public class LoginServlet extends HttpServlet {
             Cookie cookie = new Cookie("authentication", username);
             cookie.setMaxAge(60 * 1);
             response.addCookie(cookie);
-            response.sendRedirect("search.html");
+            request.getSession().setAttribute("userList", userList); 
+            response.sendRedirect("login.html");
         } else {
             request.setAttribute("error", "Unknown user, please try again");
             request.getRequestDispatcher("/login.html").forward(request, response);
