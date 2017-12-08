@@ -80,6 +80,9 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute(username, dbc.getUserIdByName(username));
             //setting session to expire in 3 mins
             session.setMaxInactiveInterval(3*60);
+            Cookie cookie = new Cookie("authentication", username);
+            cookie.setMaxAge(60 * 1);
+            response.addCookie(cookie);
             response.sendRedirect("search.html");
         } else {
             request.setAttribute("error", "Unknown user, please try again");

@@ -59,5 +59,12 @@ form.addEventListener('submit', (evt) => {
     //match database's user
     if (formOK===-4){
         form.submit();
+        checkSession();
     }
 });
+
+
+//check session id
+const checkSession = (data) => {
+    console.log(data);
+};

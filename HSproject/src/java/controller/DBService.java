@@ -3,11 +3,14 @@ package controller;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.Produces;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
@@ -26,59 +29,15 @@ import model.FavouritesPK;
 @MultipartConfig(location = "/var/www/html/uploads")
 public class DBService {
     
+    @Context
+    private HttpServletRequest request;
+    
     @EJB
     private DBController dbc;
    
     public DBService() {
     }
-  
-    /*
-    //store a new cookie
-    @GET
-    @Path("/login")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response login() {
-        NewCookie cookie = new NewCookie("name", "123");
-        return Response.ok("OK").cookie(cookie).build();
-    }
-    //to retrieve a cookie
-    @GET
-    @Path("/foo")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response foo(@CookieParam("name") Cookie cookie) {
-        if (cookie == null) {
-            return Response.serverError().entity("ERROR").build();
-        } else {
-            return Response.ok(cookie.getValue()).build();
-        }
-    }
-    
-    //returns only the cookie value
-    @GET
-    @Path("/foo")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response foo(@CookieParam("name") String value) {
-        System.out.println(value);
-        if (value == null) {
-            return Response.serverError().entity("ERROR").build();
-        } else {
-            return Response.ok(value).build();
-        }
-    }
-    
-    //removes a cookie
-    @GET
-    @Path("/logout")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response logout(@CookieParam("name") Cookie cookie) {
-        if (cookie != null) {
-            NewCookie newCookie = new NewCookie(cookie, null, 0, false);
-            return Response.ok("OK").cookie(newCookie).build();
-        }
-        return Response.ok("OK - No session").build();
-    }
-    */
-    
+     
     @POST
     @Path("register")
     @Produces(MediaType.APPLICATION_JSON)
@@ -97,15 +56,16 @@ public class DBService {
                 dbc.insertUser(u);
                 r = "new user created";
             }
-        
         return r;
     }
-     
+       
     @POST
-    @Path("logout")
+    @Path("logout")    
     @Produces(MediaType.APPLICATION_JSON)
     public Response logOut() {
-        return null;
+       HttpSession session = request.getSession();
+       session.invalidate();
+       return Response.ok("Session ended").build();
     }
    
     @GET
@@ -127,7 +87,8 @@ public class DBService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Tags> getTagsJson() {
         return dbc.getAllTags();
-    }
+    } 
+    
     
     @GET
     @Path("favourites")
