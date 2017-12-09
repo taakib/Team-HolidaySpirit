@@ -1,6 +1,6 @@
 'use strict';
 
-function getCookie(name) {
+/*function getCookie(name) {
     var dc = document.cookie;
     var prefix = name + "=";
     var begin = dc.indexOf("; " + prefix);
@@ -22,6 +22,7 @@ function getCookie(name) {
 // katsotaan authentikaatio cookien valuesta
 const cookie = () => {
     
+    cookieId();
     let checkAuth = getCookie("authentication");
     
     if (checkAuth !== null) {
@@ -31,14 +32,26 @@ const cookie = () => {
         alert("Session expired, please re-login");
         window.location.replace("login.html");
     }
-};
+};*/
 
-document.onload = cookie();
+document.onload = checkCookie();
 
-// sets cookie value to null and redirects to login site
+/* sets cookie value to null and redirects to login site
 const logout = () => {
     
     let checkAuth = getCookie("auth");
     
     checkAuth = null;
+};*/
+
+const checkCookie = () => {
+    const username = getCookie("username");
+    if (username !== "") {
+        alert("Welcome again " + username);
+    } else {
+        username = prompt("Please enter your name:", "");
+        if (username !== "" && username !== null) {
+            setCookie("username", username, 365);
+        }
+    }
 };
