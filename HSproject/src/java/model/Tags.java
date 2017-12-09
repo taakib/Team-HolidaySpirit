@@ -44,6 +44,10 @@ public class Tags implements Serializable {
         this.tagName = tagName;
     }
 
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
+    }
+
     public String getTagName() {
         return tagName;
     }

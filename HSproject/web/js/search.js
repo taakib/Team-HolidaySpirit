@@ -1,5 +1,12 @@
 'use strict';
-// When the user scrolls down 20px from the top of the document, show the button
+//if logged in, display upload button
+//document.onload = checkCookie();
+
+/*const checkCookie = (evt) => {
+    
+};*/
+
+// When the user scrolls down 20px from the top of the document, show the top button
 window.onscroll = () => {
     scrollFunction();
 };
@@ -69,5 +76,22 @@ const biggerImgs = () => {
 };*/
 
 //comments
+/*fetch imgs from server
+const fetchImages = () => {
+  const ul = document.querySelector('ul');
+  fetch('images.json').then((response) => { //how to fetch imgs from the server
+    return response.json();
+  }).then((json) => {
+    let html ='';
+    json.forEach((image) => {
+      html +=
+          `<li>
+            <a href="img/original/${image.mediaUrl}"><img src="img/thumbs/${image.mediaThumb}"></a>
+          </li>`;
+    });
+    ul.innerHTML = html;
+    biggerImgs();
+  });
+};*/
 
 

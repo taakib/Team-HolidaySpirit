@@ -30,8 +30,7 @@
         </div>
       </nav>
 
-      <div class="textbox">
-        <p class="results">N pictures found for 'santa'.</p>
+      <div class="tagbox">
         <p class="tags">tag1 tag2 tag3 tag4</p>
       </div>
 
@@ -61,7 +60,7 @@
 
       <div id="uploadModal" class="hidden">
         <a href="#" class="closeBtn">&#215;</a>
-        <form id="uploadForm" action="imgupload" enctype="multipart/form-data" method="post">
+        <form id="uploadForm" class="replaceme" action="imgupload" enctype="multipart/form-data" method="post">
           <input type="file" name="imgfile" accept="image/*">
           <input type="text" placeholder="title" name="imgTitle">
           <input type="text" placeholder="description" name="imgDesc">
@@ -81,6 +80,7 @@
           </div>
           <input type="submit" value="upload">
         </form>
+        <p id="response" class="hidden"></p>
       </div>
       <!--copy upload elements and add upload.js script-->
 

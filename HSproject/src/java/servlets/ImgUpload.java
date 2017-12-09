@@ -3,7 +3,9 @@ package servlets;
 import controller.DBController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -53,7 +55,16 @@ public class ImgUpload extends HttpServlet {
             p.setTitle(request.getParameter("imgTitle"));
             p.setDescription(request.getParameter("imgDesc"));
             p.setUploadTime(new Date());
-            //p.setTagsCollection(tagsCollection);
+            //how to set tags for the post?
+            /*String[] tags = request.getParameterValues("tag");
+            ArrayList<Tags> tagsList = new ArrayList();
+            for (String t : tags){
+                Tags tag = new Tags();
+                tag.setTagName(t);
+                tagsList.add(tag);
+            }
+            p.setTagsList(tagsList);*/
+            //how to get id from a cookie?
             //p.setUploaderId();
             dbc.insertPost(p);
             out.print("{\"src\" : \"//10.114.34.129/uploads/" + date.toString() + request.getPart("imgfile").getSubmittedFileName() +"\"}");

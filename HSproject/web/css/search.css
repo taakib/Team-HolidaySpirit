@@ -142,13 +142,9 @@ body {
   background: #ccc;
 }
 
-.textbox {
+.tagbox {
   text-align: center;
   font-size: 1em;
-}
-
-.results {
-
 }
 
 .tags {
@@ -230,6 +226,15 @@ main {
   right: 1rem;
   font-size: 1.5em;
   text-decoration: none;
+}
+
+.replaceme {
+    
+}
+
+.responsetext {
+    position: absolute;
+    font-size: 2em;
 }
 
 .lightbox-upload form {
