@@ -42,13 +42,12 @@ public class DBService {
 
     @POST
     @Path("register")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_HTML)
     public String register(@FormParam("username") String name, @FormParam("password") String password) {
         String r;
             if (dbc.findUser(name).size() > 0){
                 //if username exists return an error message to the client
                 r = "username is taken";
-              
             } else {
                 User u = new User();
                 u.setUsername(name);
@@ -57,7 +56,6 @@ public class DBService {
                 u.setReqDate(new Date());
                 dbc.insertUser(u);
                 r = "new user created";
-                
             }
         return r;
     }
