@@ -11,6 +11,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import static javax.ws.rs.client.Entity.json;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
@@ -69,6 +70,13 @@ public class DBService {
        session.invalidate();
        return Response.ok("Session ended").build();
     }
+    
+    @GET
+    @Path("fetchImgs")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Post> fetchImgs(){
+        return dbc.getPosts();
+    }
 
     @POST
     @Path("search")
@@ -79,13 +87,7 @@ public class DBService {
         return null;
     }
 
-    @GET
-    @Path("post")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Post> getAllPostJson() {
-        return dbc.getAllPosts();
-    }
-
+ 
     @GET
     @Path("tags")
     @Produces(MediaType.APPLICATION_JSON)

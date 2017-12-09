@@ -3,9 +3,13 @@ package servlets;
 import controller.DBController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -28,16 +32,10 @@ public class ImgUpload extends HttpServlet {
     @EJB
     private DBController dbc;
 
-   
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        
     }
     
     @Override
@@ -48,10 +46,12 @@ public class ImgUpload extends HttpServlet {
         response.setContentType("application/json");
         try (PrintWriter out = response.getWriter()) {
             //rename files so they are not overwritten
+            SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
             Date date = new Date();
-            request.getPart("imgfile").write(date.toString() + request.getPart("imgfile").getSubmittedFileName());
+            String d = sdf.format(date);
+            request.getPart("imgfile").write(d + request.getPart("imgfile").getSubmittedFileName());
             Post p = new Post();
-            p.setSourceUrl("//10.114.34.129/uploads/" + date.toString() + request.getPart("imgfile").getSubmittedFileName());
+            p.setSourceUrl("//10.114.34.129/uploads/" + d + request.getPart("imgfile").getSubmittedFileName());
             p.setTitle(request.getParameter("imgTitle"));
             p.setDescription(request.getParameter("imgDesc"));
             p.setUploadTime(new Date());
@@ -66,9 +66,9 @@ public class ImgUpload extends HttpServlet {
             p.setTagsList(tagsList);*/
             //how to get id from a cookie?
             //p.setUploaderId();
-            dbc.insertPost(p);
-            out.print("{\"src\" : \"//10.114.34.129/uploads/" + date.toString() + request.getPart("imgfile").getSubmittedFileName() +"\"}");
             //out.print("{\"src\" :" + p.getSourceUrl() +"\"}");
+            dbc.insertPost(p);
+            out.print("{\"src\" : \"//10.114.34.129/uploads/" + d + request.getPart("imgfile").getSubmittedFileName() +"\"}");
         }   
     }
     

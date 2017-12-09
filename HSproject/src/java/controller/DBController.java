@@ -31,14 +31,14 @@ public class DBController {
         em.persist(u);
         return u;
     }
-
-    public List<Post> getAllPosts(){
-        return em.createNamedQuery("Post.findAll").getResultList();
-    }
-
+  
     public Post insertPost(Post p){
         em.persist(p);
         return p;
+    }
+    
+    public List<Post> getPosts(){
+        return em.createNamedQuery("Post.findAll").getResultList();
     }
 
     public List<Tags> getAllTags(){
@@ -83,7 +83,7 @@ public class DBController {
         return userId;
     }
     
-    
-
-
+    public List<Post> getAllSourceUrl(){
+        return em.createNamedQuery("Post.findBySourceUrl").getResultList();
+    }
 }

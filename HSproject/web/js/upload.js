@@ -32,21 +32,12 @@ const upload = (evt) => {
   }).then((json) => {
     //when file upload is complete, user server response to display uploaded image
     //console.log(json);
-    document.querySelector('#testupload').src = json.src;
     upform.classList.replace('replaceme','hidden');
     const response = document.querySelector('#response');
     response.innerHTML = "Success!";
     response.classList.replace('hidden', 'responsetext');
     //direct to profilepage?
-    //upModal.classList.replace('lightbox-upload', 'hidden');
-    /*const imgModal = document.querySelector('#imgModal');
-    imgModal.querySelector('img').src = json.src;
-    imgModal.classList.replace('hidden', 'lightbox-img');
-    const closeButton = document.querySelector('#imgModal').querySelector('.closeBtn');
-    //when close button is clicked hide modal
-    closeButton.addEventListener('click', (evt) => {
-        imgModal.classList.replace('lightbox-img', 'hidden');
-    });*/
+    location.reload();
   });
 };
 
