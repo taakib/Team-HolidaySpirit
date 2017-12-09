@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.annotation.MultipartConfig;
@@ -46,15 +47,16 @@ public class DBService {
             if (dbc.findUser(name).size() > 0){
                 //if username exists return an error message to the client
                 r = "username is taken";
-                System.out.println(dbc.getUserIdByName(name));
-
+              
             } else {
                 User u = new User();
                 u.setUsername(name);
                 //hash password
                 u.setPasswd(password);
+                u.setReqDate(new Date());
                 dbc.insertUser(u);
                 r = "new user created";
+                
             }
         return r;
     }
@@ -68,20 +70,20 @@ public class DBService {
        return Response.ok("Session ended").build();
     }
 
-
+    @POST
+    @Path("search")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Post> getSearchedPost(@FormParam("search") String searchWord ) {
+        //query for all the posts that include the tag "searchWord"
+        //if no results return an empty gallery
+        return null;
+    }
 
     @GET
     @Path("post")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Post> getPostJson() {
+    public List<Post> getAllPostJson() {
         return dbc.getAllPosts();
-    }
-
-    @POST
-    @Path("post")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Post postPost() {
-        return null;
     }
 
     @GET

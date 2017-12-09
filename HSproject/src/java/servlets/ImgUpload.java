@@ -3,8 +3,6 @@ package servlets;
 import controller.DBController;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -13,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.User;
 import model.Post;
 import model.Tags;
@@ -49,16 +46,17 @@ public class ImgUpload extends HttpServlet {
         response.setContentType("application/json");
         try (PrintWriter out = response.getWriter()) {
             //rename files so they are not overwritten
-            Date d = new Date();
-            request.getPart("imgfile").write(d.toString() + request.getPart("imgfile").getSubmittedFileName());
+            Date date = new Date();
+            request.getPart("imgfile").write(date.toString() + request.getPart("imgfile").getSubmittedFileName());
             Post p = new Post();
-            p.setSourceUrl("//10.114.34.129/uploads/" + d.toString() + request.getPart("imgfile").getSubmittedFileName());
+            p.setSourceUrl("//10.114.34.129/uploads/" + date.toString() + request.getPart("imgfile").getSubmittedFileName());
             p.setTitle(request.getParameter("imgTitle"));
             p.setDescription(request.getParameter("imgDesc"));
+            p.setUploadTime(new Date());
             //p.setTagsCollection(tagsCollection);
-            //p.setUploaderId(session.);
+            //p.setUploaderId();
             dbc.insertPost(p);
-            out.print("{\"src\" : \"//10.114.34.129/uploads/" + d.toString() + request.getPart("imgfile").getSubmittedFileName() +"\"}");
+            out.print("{\"src\" : \"//10.114.34.129/uploads/" + date.toString() + request.getPart("imgfile").getSubmittedFileName() +"\"}");
             //out.print("{\"src\" :" + p.getSourceUrl() +"\"}");
         }   
     }

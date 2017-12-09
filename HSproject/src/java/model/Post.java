@@ -73,8 +73,7 @@ public class Post implements Serializable {
     @ManyToOne
     private User uploaderId;
 
-    public Post() {
-        //this.uploadTime = uploadTime; 
+    public Post() { 
         this.views = 0;
     }
 
