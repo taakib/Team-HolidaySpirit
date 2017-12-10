@@ -38,13 +38,13 @@
             </div>
         </nav>
 
-        <form method="post" action="db/service/register" novalidate>
+        <form method="post" action="/db/service/register" novalidate>
             <div id="registerForm" class="validform">
                 Username*:<br>
                 <input type="text" name="username" required pattern=".{3,}" placeholder="3 or more characters"><br>
                 Password*:<br>
                 <input type="password" name="password" required pattern=".{6,}" placeholder="6 or more characters"><br>
-                <input type="submit" value="Submit" id="submitBtn">
+                <input type="submit" value="Submit" id="formBtn">
                 <p id="response" class="hidden"></p>
             </div>
         </form>

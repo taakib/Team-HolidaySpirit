@@ -1,5 +1,7 @@
 package controller;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -11,7 +13,6 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import static javax.ws.rs.client.Entity.json;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
@@ -30,32 +31,35 @@ import model.FavouritesPK;
 @Path("service")
 @MultipartConfig(location = "/var/www/html/uploads")
 public class DBService {
+    
+    public static final String SALT = "saltybitch";
 
     @Context
     private HttpServletRequest request;
 
     @EJB
     private DBController dbc;
-
+   
     public DBService() {
     }
 
     @POST
     @Path("register")
-    @Produces(MediaType.TEXT_HTML)
-    public String register(@FormParam("username") String name, @FormParam("password") String password) {
-        String r;
-            if (dbc.findUser(name).size() > 0){
-                //if username exists return an error message to the client
-                r = "username is taken";
-            } else {
-                User u = new User();
-                u.setUsername(name);
-                //hash password
-                u.setPasswd(password);
-                u.setReqDate(new Date());
-                dbc.insertUser(u);
-                r = "new user created";
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response register(@FormParam("username") String name, @FormParam("password") String password) {
+        Response r;
+        if (dbc.findUser(name).size() > 0){
+            //if username exists return an error message to the client
+            r = Response.ok("Username already exists!").build();
+        } else {
+            User u = new User();
+            String saltedpw = SALT + password;
+            String hashedpw = generateHash(saltedpw);
+            u.setUsername(name);
+            u.setPasswd(hashedpw);
+            u.setReqDate(new Date());
+            dbc.insertUser(u);
+            r = Response.ok("New user created!").build();
             }
         return r;
     }
@@ -105,4 +109,26 @@ public class DBService {
     public Post postFav() {
         return null;
     }
+    
+    public static String generateHash(String input) {
+    StringBuilder hash = new StringBuilder();
+
+    try {
+        MessageDigest sha = MessageDigest.getInstance("SHA-1");
+        byte[] hashedBytes = sha.digest(input.getBytes());
+        char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+					'a', 'b', 'c', 'd', 'e', 'f' };
+        for (int idx = 0; idx < hashedBytes.length; ++idx) {
+            byte b = hashedBytes[idx];
+            hash.append(digits[(b & 0xf0) >> 4]);
+            hash.append(digits[b & 0x0f]);
+        }
+        } catch (NoSuchAlgorithmException e) {
+            // handle error here.
+	}
+	return hash.toString();
+    }
+    
 }
+
+
