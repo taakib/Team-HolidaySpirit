@@ -1,122 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My profile</title>
-    <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/profilepage.css">
-    <link rel="stylesheet" href="css/search.css">
+    <head>
+        <meta charset="UTF-8">
+        <title>My profile</title>
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/profilepage.css">
+        <link rel="stylesheet" href="css/search.css">
 
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
-<body>
-<div class="container">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
 
-    <nav role="navigation">
-        <div id="menuToggle">
+            <nav role="navigation">
+                <div id="menuToggle">
 
-            <input type="checkbox">
+                    <input type="checkbox">
 
-            <span></span>
-            <span></span>
-            <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
 
-            <ul id="menu">
-                <a href="#">
-                    <li>Home</li>
-                </a>
-                <a href="#">
-                    <li>About</li>
-                </a>
-                <a href="#">
-                    <li>Info</li>
-                </a>
-                <a href="#">
-                    <li>Contact</li>
-                </a>
-                <a href="#" target="_blank">
-                    <li>Show me more</li>
-                </a>
-            </ul>
+                    <ul id="menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#"></a>About</li>
+                        <li><a href="#"></a>Info</li>
+                        <li><a href="#"></a>Contact</li>
+                        <li><a href="#" target="_blank"></a>Show me more</li>
+
+                    </ul>
+                </div>
+            </nav>
+
+            <!--some stuff like search bar etc links to main page etc-->
+            <div class="profile">
+                <div class="avatar">
+                    <img alt="" src="http://digitalsigniloilo.com/wp-content/uploads/2015/12/blank-profile.jpg">
+                </div>
+                <div class="info">
+                    <!-- add username + add name-->
+                    <p class="profileName"><!--id="name"Add name here --></p>
+                    <h1>Your Profile</h1>
+                </div>
+            </div>
+
+            <!-- add settings button for deleting account, right top corner,
+            and favourites + upload buttons below profile name ? something like this -->
+
+            <nav id="profilenav">
+                <a class="tablinks" id="uploadtab" href="#photoarea">Uploads</a>
+                <a class="tablinks" id="favoritetab" href="#favorites">Favorites</a>
+            </nav>
+
+            <div class="uploads">
+
+
+
+                <div id="photoarea" class="default">
+                    <!-- <p>Photos</p>
+                     <p>here</p>-->
+                    <!--do something here, check modal   -->
+
+                    <!--<a href="#" class="hidden" id="closeBtn">&#215;</a>-->
+
+                    <a href="img/santa-claus3.jpg">
+                        <img src="img/santa-claus3.jpg" alt="">
+                    </a>
+                    <a href="img/santa-claus3.jpg">
+                        <img src="img/santa-claus3.jpg" alt="">
+                    </a>
+                    <a href="img/santa-claus3.jpg">
+                        <img src="img/santa-claus3.jpg" alt="">
+                    </a>
+                    <a href="img/santa-claus3.jpg">
+                        <img src="img/santa-claus3.jpg" alt="">
+                    </a>
+                    <a href="img/santa-claus3.jpg">
+                        <img src="img/santa-claus3.jpg" alt="">
+                    </a>
+                    <a href="img/santa-claus3.jpg">
+                        <img src="img/santa-claus3.jpg" alt="">
+                    </a>
+                    <a href="img/santa-claus3.jpg">
+                        <img src="img/santa-claus3.jpg" alt="">
+                    </a>
+                    <a href="img/santa-claus3.jpg">
+                        <img src="img/santa-claus3.jpg" alt="">
+                    </a>
+
+
+
+                    <main>
+                        <ul class="profilephotoarea">
+                            <!-- HTML made with JS goes here -->
+
+                            <!--  <li><img src="#"></li> -->
+
+                        </ul>
+                    </main>
+
+                    <div id="modalIMAGE" class="hidden">
+                        <a href="#" class="closeBtnn">&#215;</a>
+                        <img src="" alt="">
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="favorites" style="display: none" id="favorites">
+                <!-- insert here favorites from database-->
+                <p>Here are your favorites!</p>
+            </div>
+
+            <button id="uploadButton">Upload</button>
+            <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+
+            <div id="uploadModal" class="hidden">
+                <a href="#" class="closeBtn">&#215;</a>
+                <form id="uploadForm" action="/fileupload" enctype="multipart/form-data" method="post">
+                    <input type="file" placeholder="image" name="uploadedImg" accept="image/*">
+                    <input type="text" placeholder="title" name="imgTitle">
+                    <input type="text" placeholder="description" name="imgDesc">
+                    <input type="text" placeholder="tags" name="imgTags">
+                    <input type="submit" value="upload">
+                </form>
+            </div>
+            <div id="modal" class="hidden">
+                <a href="#" class="closeBtn">&#215;</a>
+                <img>
+            </div>
         </div>
-    </nav>
-
-    <!--some stuff like search bar etc links to main page etc-->
-    <div class="profile">
-        <div class="avatar">
-            <img alt="" src="http://digitalsigniloilo.com/wp-content/uploads/2015/12/blank-profile.jpg">
-        </div>
-        <div class="info">
-            <!-- add username + add name-->
-            <p><!--id="name"Add name here -->"Mike Mikkelsson"</p>
-        </div>
-    </div>
-
-    <!-- add settings button for deleting account, right top corner,
-    and favourites + upload buttons below profile name ? something like this -->
-
-    <main class="secondary-color">
-
-        <ul>
-            <!-- HTML made with JS goes here -->
-
-        </ul>
-    </main>
-    <section id="photoarea" class="default">
-       <!-- <p>Photos</p>
-        <p>here</p>-->
-        <!--do something here, check modal   -->
-
-        <a href="#" class="hidden" id="closeBtn">&#215;</a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-        <a href="img/santa-claus3.jpg">
-            <img src="img/santa-claus3.jpg">
-        </a>
-
-    </section>
-
-    <button id="uploadButton">Upload</button>
-    <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
-
-    <div id="uploadModal" class="hidden">
-        <a href="#" class="closeBtn">&#215;</a>
-        <form id="uploadForm" action="/fileupload" enctype="multipart/form-data" method="post">
-            <input type="file" placeholder="image" name="uploadedImg" accept="image/*">
-            <input type="text" placeholder="title" name="imgTitle">
-            <input type="text" placeholder="description" name="imgDesc">
-            <input type="text" placeholder="tags" name="imgTags">
-            <input type="submit" value="upload">
-        </form>
-    </div>
-
-<!--
-    <div id="modal" class="hidden">
-        <a href="#" class="closeBtn">&#215;</a>
-        <img>
-    </div> -->
-</div>
-<script src="js/profile.js"></script>
-<script src="js/search.js"></script>
-</body>
+        <script src="js/profile.js"></script>
+        <script src="js/upload.js"></script>
+    </body>
 </html>

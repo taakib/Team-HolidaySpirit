@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import model.User;
 import model.Post;
@@ -31,12 +32,12 @@ public class DBController {
         em.persist(u);
         return u;
     }
-  
+
     public Post insertPost(Post p){
         em.persist(p);
         return p;
     }
-    
+
     public List<Post> getPosts(){
         return em.createNamedQuery("Post.findAll").getResultList();
     }
@@ -82,4 +83,14 @@ public class DBController {
         }
         return userId;
     }
+
+    public User findById(int id) {
+        try {
+            User u = (User)em.createNamedQuery("User.findById").setParameter("id", id).getSingleResult();
+            return u;
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-/*function getCookie(name) {
+function getCookie(name) {
     var dc = document.cookie;
     var prefix = name + "=";
     var begin = dc.indexOf("; " + prefix);
@@ -21,39 +21,39 @@
 
 // katsotaan authentikaatio cookien valuesta
 const cookie = () => {
-    
-    cookieId();
+
     let checkAuth = getCookie("authentication");
-    
+
     if (checkAuth !== null) {
         let username = getCookie('authentication');
-        user_name.innerHTML = 'Hello ' + username;
+        //username.innerHTML = 'Hello ' + username;
     } else {
-        alert("Session expired, please re-login");
+        alert("No activity within 1440 seconds; please log in again.");
         window.location.replace("login.html");
-    }
-};*/
-
-/* sets cookie value to null and redirects to login site
-const logout = () => {
-    
-    let checkAuth = getCookie("auth");
-    
-    checkAuth = null;
-};*/
-
-const checkCookie = () => {
-    const username = getCookie("username");
-    if (username !== "") {
-        //alert("Welcome again " + username);
-        const responseText = document.querySelector('#response');
-        responseText.innerHTML = "Welcome again " + username;
-    } else {
-        username = prompt("Please enter your name:", "");
-        if (username !== "" && username !== null) {
-            setCookie("username", username, 365);
-        }
     }
 };
 
-document.onload = checkCookie;
+document.onload = cookie();
+
+// sets cookie value to null and redirects to login site
+const logout = () => {
+
+    let checkAuth = getCookie("auth");
+
+    checkAuth = null;
+};
+
+const cookieId = (evt) => {
+    evt.preventDefault();
+    const settings = {
+        method: 'GET',
+        credentials: 'same-origin', // # ILE
+        body: data
+    };
+    fetch('//10.114.34.129:8080/HSproject/db/service/id', settings).then((response) => {
+        return response.text();
+    }).then((text) => {
+        console.log(text);
+
+    });
+};

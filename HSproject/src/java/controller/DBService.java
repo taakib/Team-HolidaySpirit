@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.CookieParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -27,13 +28,13 @@ import model.Favourites;
  */
 @Path("service")
 public class DBService {
-    
+
     @Context
     private HttpServletRequest request;
 
     @EJB
     private DBController dbc;
-   
+
     public DBService() {
     }
 
@@ -64,7 +65,7 @@ public class DBService {
        session.invalidate();
        return Response.ok("Session ended").build();
     }
-    
+
     @GET
     @Path("fetchImgs")
     @Produces(value = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -81,7 +82,7 @@ public class DBService {
         return null;
     }
 
- 
+
     /*@GET
     @Path("tags")
     @Produces(MediaType.APPLICATION_JSON)
@@ -95,13 +96,14 @@ public class DBService {
     public List<Favourites> getFavsJson() {
         return dbc.getAllFavs();
     }
+
     @POST
     @Path("favourites")
     @Produces(MediaType.APPLICATION_JSON)
     public Post postFav() {
         return null;
-    }  
-    
+    }
+
     @GET
     @Path("test")
     @Produces(MediaType.APPLICATION_JSON)
@@ -109,7 +111,7 @@ public class DBService {
         ObjectMapper mapper = new ObjectMapper();
         return Response.ok(mapper.writeValueAsString(dbc.findUser("ILKKACHAN"))).build();
     }
-    
+
     @GET
     @Path("test2")
     @Produces(MediaType.APPLICATION_JSON)
@@ -117,5 +119,3 @@ public class DBService {
         return "kill them all 2?";
     }
 }
-
-
