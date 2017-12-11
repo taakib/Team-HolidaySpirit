@@ -1,8 +1,7 @@
 'use strict';
-
 //check for required fields
 //global variable to allow form submission
-let formOK = 0;
+let formOK = -4;
 //select all input elements
 const inputs = document.querySelectorAll('input');
 
@@ -17,9 +16,9 @@ const checkAttribute = (elements, attr, func) => {
 const checkEmpty = (element) => {
     if(element.value === '') {
         formOK ++;
-        element.setAttribute('style', 'border: red solid 1px');
+        //element.setAttribute('style', 'border: red solid 1px');
         //modern browsers:
-        //element.style='border: red solid 1px';
+        element.style='border: red solid 1px';
     } else {
         formOK--;
         element.removeAttribute('style');
@@ -38,15 +37,15 @@ const checkPattern = (element) => {
   }
 };
 
-checkAttribute(inputs, 'required', checkEmpty);
-const formBtn = document.querySelector('#formBtn');
+//checkAttribute(inputs, 'required', checkEmpty);
+let reqform = document.querySelector('form');
 
-formBtn.addEventListener('click', (evt) => {
+reqform.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    formOK=0;
+    //formOK = 0;
     const responseText = document.querySelector('#response');
-    checkAttribute(inputs, 'required', checkEmpty);
-    checkAttribute(inputs, 'pattern', checkPattern);
+    //checkAttribute(inputs, 'required', checkEmpty);
+    //checkAttribute(inputs, 'pattern', checkPattern);
     console.log(formOK);
     if (formOK === -4){
         if (responseText.classList.contains('responsetext')){
@@ -54,30 +53,36 @@ formBtn.addEventListener('click', (evt) => {
         }
         register();
     } else {
-        responseText.innerHTML = "incorrect username and/or password";
+        responseText.innerHTML = "invalid username and/or password";
         responseText.classList.replace('hidden', 'responsetext');
     }
 });
 
 const register = () => {
-    const form = document.querySelector('#registerForm');
+    const form = document.querySelector('form');
     const data = new FormData(form);
     const settings = {
         method: 'POST',
         credentials: 'same-origin', // this might be needed for some servers
-        body: data
+        body: data,
+        headers: {'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+        }
     };
     fetch('//10.114.34.129:8080/HSproject/db/service/register', settings).then((response) => {
-        return response.text;
-    }).then((text) => {
+        return response;
+    }).then((response) => {
         const responseText = document.querySelector('#response');
-        if(text.toString() === "username is taken") {
-            console.log(text.toString());
-            responseText.innerHTML = text.toString();
-            responseText.classList.replace('hidden', 'responsetext'); 
+        if(response.stringify === "Username already exists") {
+            /*console.log(response.stringify);
+            responseText.innerHTML = response.stringify;
+            responseText.classList.replace('hidden', 'responsetext');*/ 
+            alert(response.stringify);
         } else {
-            responseText.innerHTML = text.toString();
+            /*responseText.innerHTML = response.stringify;
             responseText.classList.replace('hidden', 'responsetext');
+            */
+           alert(response.stringify);
         }
     });
 };

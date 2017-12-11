@@ -41,21 +41,18 @@ public class DBService {
     @POST
     @Path("register")
     @Produces(MediaType.TEXT_HTML)
-    public String register(@FormParam("username") String name, @FormParam("password") String password) {
-        String r;
-        //String SALT = "saltybitch";
+    public Response register(@FormParam("username") String name, @FormParam("password") String password) {
+        Response r;
         if (dbc.findUser(name).size() > 0){
             //if username exists return an error message to the client
-            r = "Username already exists";
+            r = Response.notModified("Username already exists").build();
         } else {
             User u = new User();
-            //String saltedpw = SALT + password;
-            //String hashedpw = generateHash(saltedpw);
             u.setUsername(name);
             u.setPasswd(password);
             u.setReqDate(new Date());
             dbc.insertUser(u);
-            r = "New user created!";
+            r = Response.accepted("New user created!").build();
         }
         return r;
     }
@@ -104,28 +101,7 @@ public class DBService {
     @Produces(MediaType.APPLICATION_JSON)
     public Post postFav() {
         return null;
-    }
-    
-    
-    /*public String generateHash(String input) {
-    StringBuilder hash = new StringBuilder();
-
-    try {
-        MessageDigest sha = MessageDigest.getInstance("SHA-1");
-        byte[] hashedBytes = sha.digest(input.getBytes());
-        char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-					'a', 'b', 'c', 'd', 'e', 'f' };
-        for (int idx = 0; idx < hashedBytes.length; ++idx) {
-            byte b = hashedBytes[idx];
-            hash.append(digits[(b & 0xf0) >> 4]);
-            hash.append(digits[b & 0x0f]);
-        }
-        } catch (NoSuchAlgorithmException e) {
-            // handle error here.
-	}
-	return hash.toString();
-    }*/
-    
+    }  
 }
 
 
