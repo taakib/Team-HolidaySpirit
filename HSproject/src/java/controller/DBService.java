@@ -100,14 +100,6 @@ public class DBService {
         return dbc.getAllFavs();
     }
     
-    @GET
-    @Path("id")
-    @Produces(MediaType.TEXT_HTML)
-    public int getId(String name) {
-        return dbc.getUserIdByName(name);
-    }
-    
-    
     @POST
     @Path("favourites")
     @Produces(MediaType.APPLICATION_JSON)
