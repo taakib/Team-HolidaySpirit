@@ -138,7 +138,7 @@ aside {
 .lightboxi {
     width: 70%;
     background-color: #fff;
-    position: fixed;
+    position: absolute;
     top: 1rem;
     padding: 1rem;
     left: 50%;
@@ -190,7 +190,7 @@ aside {
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
     #photoarea img {
         display: flex;
         flex-wrap: wrap;
@@ -203,6 +203,14 @@ aside {
     .profile .avatar {
         min-width: 20%;
         height: auto;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+        height: auto;
+        min-width: 75%;
+        text-align: center;
     }
 }
 
@@ -308,4 +316,34 @@ aside {
     width: 20%;
     height: auto;
     padding: 5px;
+}
+
+#profilenav {
+    text-align: center;
+    margin: 10px auto;
+    font-size: x-large;
+    width: 90%;
+    background-color: red;
+}
+#profilenav a {
+    background-color: lightcyan;
+}
+
+#profilenav a:hover {
+    background-color: #2196F3;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#profilenav a.active {
+    background-color: #2196F3;
+}
+
+.favorites p{
+    text-align: center;
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
 }
