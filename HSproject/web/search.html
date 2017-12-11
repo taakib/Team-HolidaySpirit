@@ -16,95 +16,95 @@
     </head>
     <body>
 
-      <nav class="topnav">
-        <div id="menuToggle">
-        <input type="checkbox">
-        <span></span>
-        <span></span>
-        <span></span>
-        <ul id="menu">
-                        <a href="index.html"><li>Home</li></a>
-                        <a href="login.html"><li>Login!</li></a>
-                        <a href="register.html"><li>Register!</li></a>
-                        <a href="info.html"><li>Info!</li></a>
-                    </ul>
-    </div>
-        <a href="#homepage">home</a>
-        <div class="search-container">
-          <form action="">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">Submit</button>
-          </form>
+        <nav class="topnav">
+            <div id="menuToggle">
+                <input type="checkbox">
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login!</a></li>
+                    <li><a href="register.html">Register!</a></li>
+                    <li><a href="info.html">Info!</a></li>
+                </ul>
+            </div>
+            <a href="#homepage">home</a>
+            <div class="search-container">
+                <form action="">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </nav>
+
+        <div class="textbox">
+            <p class="results">N pictures found for 'santa'.</p>
+            <p class="tags">tag1 tag2 tag3 tag4</p>
         </div>
-      </nav>
 
-      <div class="textbox">
-        <p class="results">N pictures found for 'santa'.</p>
-        <p class="tags">tag1 tag2 tag3 tag4</p>
-      </div>
+        <main>
+            <ul class="gallery">
+                <li>
+                    <a href="img/pexels-photo-236586.jpeg"><img id="testupload" src=""></a>
+                </li>
+                <li>
+                    <a href="img/pexels-photo-306864.jpeg"><img src="img/christmas-thumb-001.jpg" alt="santaimg"></a>
+                </li>
+                <li>
+                    <a href="img/pexels-photo-383646.jpeg"><img src="img/christmas-thumb-002.jpg" alt="santaimg"></a>
+                </li>
+                <li>
+                    <a href="img/pexels-photo-688010.jpeg"><img src="img/christmas-thumb-003.jpg" alt="santaimg"></a>
+                </li>
+                <li>
+                    <a href="img/santa-claus-christmas-beard-celebration-41963.jpeg"><img src="img/christmas-thumb-004.jpg" alt="santaimg"></a>
+                </li>
+            </ul>
+        </main>
 
-      <main>
-        <ul class="gallery">
-          <li>
-              <a href="img/pexels-photo-236586.jpeg"><img id="testupload" src=""></a>
-            </li>
-            <li>
-              <a href="img/pexels-photo-306864.jpeg"><img src="img/christmas-thumb-001.jpg" alt="santaimg"></a>
-            </li>
-            <li>
-              <a href="img/pexels-photo-383646.jpeg"><img src="img/christmas-thumb-002.jpg" alt="santaimg"></a>
-            </li>
-            <li>
-              <a href="img/pexels-photo-688010.jpeg"><img src="img/christmas-thumb-003.jpg" alt="santaimg"></a>
-            </li>
-            <li>
-              <a href="img/santa-claus-christmas-beard-celebration-41963.jpeg"><img src="img/christmas-thumb-004.jpg" alt="santaimg"></a>
-            </li>
-        </ul>
-      </main>
+        <!--copy upload elements and add upload.js script-->
+        <button id="uploadButton">Upload</button>
+        <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
 
-      <!--copy upload elements and add upload.js script-->
-      <button id="uploadButton">Upload</button>
-      <button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+        <div id="uploadModal" class="hidden">
+            <a href="#" class="closeBtn">&#215;</a>
+            <form id="uploadForm" action="imgupload" enctype="multipart/form-data" method="post">
+                <input type="file" name="imgfile" accept="image/*">
+                <input type="text" placeholder="title" name="imgTitle">
+                <input type="text" placeholder="description" name="imgDesc">
+                <div class="tags">
+                    <input type="checkBox" name="tag" id="tag1">
+                    <label for="tag1">Snow</label>
+                    <input type="checkBox" name="tag" id="tag2">
+                    <label for="tag2">Santa</label>
+                    <input type="checkBox" name="tag" id="tag3">
+                    <label for="tag3">Present</label>
+                    <input type="checkBox" name="tag" id="tag4">
+                    <label for="tag4">Candle</label>
+                    <input type="checkBox" name="tag" id="tag5">
+                    <label for="tag5">Christmas tree</label>
+                    <input type="checkBox" name="tag" id="tag6">
+                    <label for="tag6">Red</label>
+                </div>
+                <input type="submit" value="upload">
+            </form>
+        </div>
+        <!--copy upload elements and add upload.js script-->
 
-      <div id="uploadModal" class="hidden">
-        <a href="#" class="closeBtn">&#215;</a>
-        <form id="uploadForm" action="imgupload" enctype="multipart/form-data" method="post">
-          <input type="file" name="imgfile" accept="image/*">
-          <input type="text" placeholder="title" name="imgTitle">
-          <input type="text" placeholder="description" name="imgDesc">
-          <div class="tags">
-              <input type="checkBox" name="tag" id="tag1">
-              <label for="tag1">Snow</label>
-              <input type="checkBox" name="tag" id="tag2">
-              <label for="tag2">Santa</label>
-              <input type="checkBox" name="tag" id="tag3">
-              <label for="tag3">Present</label>
-              <input type="checkBox" name="tag" id="tag4">
-              <label for="tag4">Candle</label>
-              <input type="checkBox" name="tag" id="tag5">
-              <label for="tag5">Christmas tree</label>
-              <input type="checkBox" name="tag" id="tag6">
-              <label for="tag6">Red</label>
-          </div>
-          <input type="submit" value="upload">
-        </form>
-      </div>
-      <!--copy upload elements and add upload.js script-->
+        <div id="imgModal" class="hidden">
+            <a href="#" class="closeBtn">&#215;</a>
+            <img src="" alt="">
+            <div class="post-container">
+                <p>info about the post</p>
+                <p>tags</p>
+                <div class="comments-container">
 
-      <div id="imgModal" class="hidden">
-        <a href="#" class="closeBtn">&#215;</a>
-        <img src="" alt="">
-        <div class="post-container">
-            <p>info about the post</p>
-            <p>tags</p>
-            <div class="comments-container">
-
+                </div>
             </div>
         </div>
-      </div>
 
-      <script src="js/search.js"></script>
-      <script src="js/upload.js"></script>
+        <script src="js/search.js"></script>
+        <script src="js/upload.js"></script>
     </body>
 </html>
