@@ -32,12 +32,12 @@ public class DBController {
         em.persist(u);
         return u;
     }
-  
+
     public Post insertPost(Post p){
         em.persist(p);
         return p;
     }
-    
+
     public List<Post> getPosts(){
         return em.createNamedQuery("Post.findAll").getResultList();
     }
@@ -83,7 +83,6 @@ public class DBController {
         }
         return userId;
     }
-<<<<<<< HEAD
 
     public User findById(int id) {
         try {
@@ -94,6 +93,4 @@ public class DBController {
         }
     }
 
-=======
->>>>>>> annibranch
 }

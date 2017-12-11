@@ -64,7 +64,6 @@ const register = () => {
     const settings = {
         method: 'POST',
         credentials: 'same-origin', // this might be needed for some servers
-<<<<<<< HEAD
         body: data
      };
      fetch('//10.114.34.129:8080/HSproject/db/service/register', settings).then((response) => {
@@ -76,28 +75,7 @@ const register = () => {
                 responseText.innerHTML = json.toString();
             } else {
                responseText.innerHTML = json.toString();
-               form.submit(); 
+               form.submit();
            }
         });
 };
-=======
-        body: data,
-        headers: {'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
-        }
-    };
-    fetch('//10.114.34.129:8080/HSproject/db/service/register', settings).then((response) => {
-        return response.text();
-    }).then((text) => {
-        const responseText = document.querySelector('#response');
-        if(text.stringify === "Username already exists") {
-            console.log(text.stringify);
-            responseText.innerHTML = text.stringify;
-            responseText.classList.replace('hidden', 'responsetext');
-        } else {
-            responseText.innerHTML = text.stringify;
-            responseText.classList.replace('hidden', 'responsetext');
-        }
-    });
-};
->>>>>>> annibranch
