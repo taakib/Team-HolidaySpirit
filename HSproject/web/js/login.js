@@ -14,18 +14,11 @@ const checkAttribute = (elements, attr, func) => {
     });
 };
 
-/*const submit = document.getElementById('#submit');
-submit.addEventListener('click', (evt) => {
-
-});*/
-
 const checkEmpty = (element) => {
     if(element.value === '') {
         formOK ++;
         element.setAttribute('style', 'border: red solid 1px');
-        //element.setAttribute('p', 'display: block');
-        //modern browsers:
-        //element.style = border:"red solid 1px";
+        element.style = 'border: red solid 1px';
     }
     else {
         formOK--;
@@ -49,7 +42,6 @@ const checkPattern = (element) => {
 checkAttribute(inputs, 'required', checkEmpty);
 
 const form = document.querySelector('form');
-
 form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     formOK=0;
@@ -57,8 +49,25 @@ form.addEventListener('submit', (evt) => {
     checkAttribute(inputs, 'pattern', checkPattern);
     console.log(formOK);
     //match database's user
-    if (formOK===-4){
-        form.submit();
-    }
+    if (formOK === -4){
+        login();
+    } 
 });
 
+const login = () => {
+    const form = document.querySelector('form');
+    const data = new FormData(form);
+    const settings = {
+        method: 'POST',
+        credentials: 'same-origin', // this might be needed for some servers
+        body: data
+    };
+    fetch('//10.114.34.129:8080/HSproject/login', settings).then((response) => {
+        return response.text();
+    }).then((text) => {
+        const responseText = document.querySelector('#response');
+        console.log(text);
+        responseText.innerHTML = text;
+    });
+    
+};

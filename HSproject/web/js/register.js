@@ -15,66 +15,52 @@ const checkAttribute = (elements, attr, func) => {
 };
 
 const checkEmpty = (element) => {
-    const responseText = document.querySelector('#response');
     if(element.value === '') {
         formOK ++;
         element.setAttribute('style', 'border: red solid 1px');
         //modern browsers:
         //element.style='border: red solid 1px';
-        responseText.innerHTML = ("username and password is required");
-        responseText.classList.replace('hidden','responsetext');
-    }
-    else {
-        if (responseText.classList.contains('responsetext')) {
-          responseText.classList.replace('responsetext', 'hidden');
-          responseText.innerHTML = "";
-        } else {
-            formOK--;
-            element.removeAttribute('style');
-        }
+    } else {
+        formOK--;
+        element.removeAttribute('style');
     }
 };
 
 const checkPattern = (element) => {
-  const responseText = document.querySelector('#response');
   const pattern = new RegExp(element.getAttribute('pattern'), 'i');
   const value = element.value;
   if (!pattern.exec(value)){
       formOK++;
       element.setAttribute('style', 'border: yellow solid 1px');
-      responseText.innerHTML = ("username and/or password is too short");
-      responseText.classList.replace('hidden','responsetext');
   } else {
-      if (responseText.classList.contains('responsetext')) {
-          responseText.classList.replace('responsetext', 'hidden');
-          responseText.innerHTML = "";
-      } else {
-        formOK--;
-        element.removeAttribute('style');
-      }
+      formOK--;
+      element.removeAttribute('style');
   }
 };
 
-const form = document.querySelector('#registerForm');
+checkAttribute(inputs, 'required', checkEmpty);
+const formBtn = document.querySelector('#formBtn');
 
-form.addEventListener('submit', (evt) => {
+formBtn.addEventListener('click', (evt) => {
     evt.preventDefault();
     formOK=0;
+    const responseText = document.querySelector('#response');
     checkAttribute(inputs, 'required', checkEmpty);
     checkAttribute(inputs, 'pattern', checkPattern);
     console.log(formOK);
-    if (formOK===-4){
-        checkName(); 
+    if (formOK === -4){
+        if (responseText.classList.contains('responsetext')){
+            responseText.classList.replace('responsetext','hidden');
+        }
+        register();
+    } else {
+        responseText.innerHTML = "incorrect username and/or password";
+        responseText.classList.replace('hidden', 'responsetext');
     }
 });
 
-/*
- * author: anniluo
- */
-
-//registers returns a response if successful
 const register = () => {
-    const nameInput = document.querySelector('input[name="username"]');
+    const form = document.querySelector('#registerForm');
     const data = new FormData(form);
     const settings = {
         method: 'POST',
@@ -82,16 +68,16 @@ const register = () => {
         body: data
     };
     fetch('//10.114.34.129:8080/HSproject/db/service/register', settings).then((response) => {
-        return response.json();
-    }).then((json) => {
+        return response.text;
+    }).then((text) => {
         const responseText = document.querySelector('#response');
-            if(json.toString() === "username is taken") {
-                console.log(json);;
-                responseText.innerHTML = json;
-                responseText.classList.replace('hidden', 'responsetext'); 
-            } else {
-               responseText.innerHTML = json;
-               responseText.classList.replace('hidden', 'responsetext');
-           }
-        });
+        if(text.toString() === "username is taken") {
+            console.log(text.toString());
+            responseText.innerHTML = text.toString();
+            responseText.classList.replace('hidden', 'responsetext'); 
+        } else {
+            responseText.innerHTML = text.toString();
+            responseText.classList.replace('hidden', 'responsetext');
+        }
+    });
 };

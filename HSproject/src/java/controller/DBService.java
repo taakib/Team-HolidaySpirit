@@ -1,13 +1,11 @@
 package controller;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -29,11 +27,8 @@ import model.FavouritesPK;
  * @author blure
  */
 @Path("service")
-@MultipartConfig(location = "/var/www/html/uploads")
 public class DBService {
     
-    public static final String SALT = "saltybitch";
-
     @Context
     private HttpServletRequest request;
 
@@ -45,22 +40,23 @@ public class DBService {
 
     @POST
     @Path("register")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response register(@FormParam("username") String name, @FormParam("password") String password) {
-        Response r;
+    @Produces(MediaType.TEXT_HTML)
+    public String register(@FormParam("username") String name, @FormParam("password") String password) {
+        String r;
+        //String SALT = "saltybitch";
         if (dbc.findUser(name).size() > 0){
             //if username exists return an error message to the client
-            r = Response.ok("Username already exists!").build();
+            r = "Username already exists";
         } else {
             User u = new User();
-            String saltedpw = SALT + password;
-            String hashedpw = generateHash(saltedpw);
+            //String saltedpw = SALT + password;
+            //String hashedpw = generateHash(saltedpw);
             u.setUsername(name);
-            u.setPasswd(hashedpw);
+            u.setPasswd(password);
             u.setReqDate(new Date());
             dbc.insertUser(u);
-            r = Response.ok("New user created!").build();
-            }
+            r = "New user created!";
+        }
         return r;
     }
 
@@ -110,7 +106,8 @@ public class DBService {
         return null;
     }
     
-    public static String generateHash(String input) {
+    
+    /*public String generateHash(String input) {
     StringBuilder hash = new StringBuilder();
 
     try {
@@ -127,7 +124,7 @@ public class DBService {
             // handle error here.
 	}
 	return hash.toString();
-    }
+    }*/
     
 }
 

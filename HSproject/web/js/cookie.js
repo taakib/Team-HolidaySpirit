@@ -34,8 +34,6 @@ const cookie = () => {
     }
 };*/
 
-document.onload = checkCookie();
-
 /* sets cookie value to null and redirects to login site
 const logout = () => {
     
@@ -47,7 +45,9 @@ const logout = () => {
 const checkCookie = () => {
     const username = getCookie("username");
     if (username !== "") {
-        alert("Welcome again " + username);
+        //alert("Welcome again " + username);
+        const responseText = document.querySelector('#response');
+        responseText.innerHTML = "Welcome again " + username;
     } else {
         username = prompt("Please enter your name:", "");
         if (username !== "" && username !== null) {
@@ -55,3 +55,5 @@ const checkCookie = () => {
         }
     }
 };
+
+document.onload = checkCookie;
