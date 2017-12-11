@@ -41,11 +41,11 @@ public class DBService {
     @POST
     @Path("register")
     @Produces(MediaType.APPLICATION_JSON)
-    public String register(@FormParam("username") String name, @FormParam("password") String password) {
-        String r;
+    public Response register(@FormParam("username") String name, @FormParam("password") String password) {
+        Response r;
             if (dbc.findUser(name).size() > 0){
                 //if username exists return an error message to the client
-                r = "username is taken";
+                r = Response.ok("username already exists!").build();
                 System.out.println(dbc.getUserIdByName(name));
 
             } else {
@@ -54,7 +54,7 @@ public class DBService {
                 //hash password
                 u.setPasswd(password);
                 dbc.insertUser(u);
-                r = "new user created";
+                r = Response.accepted("New user created!").build();
             }
         return r;
     }

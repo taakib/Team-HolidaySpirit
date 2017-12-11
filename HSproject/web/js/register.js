@@ -89,6 +89,4 @@ const checkName = (evt) => {
                form.submit(); 
            }
         });
- 
-    //responseText.classList.replace('hidden', ''); 
 };
