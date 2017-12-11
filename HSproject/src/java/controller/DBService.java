@@ -1,11 +1,12 @@
 package controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -13,13 +14,11 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 import model.User;
 import model.Post;
-import model.Tags;
+//import model.Tags;
 import model.Favourites;
-import model.FavouritesPK;
 
 /**
  * REST Web Service
@@ -40,7 +39,7 @@ public class DBService {
 
     @POST
     @Path("register")
-    //@Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_HTML)
     public Response register(@FormParam("username") String name, @FormParam("password") String password) {
         Response r;
         if (dbc.findUser(name).size() > 0){
@@ -68,7 +67,7 @@ public class DBService {
     
     @GET
     @Path("fetchImgs")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(value = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Post> fetchImgs(){
         return dbc.getPosts();
     }
@@ -83,12 +82,12 @@ public class DBService {
     }
 
  
-    @GET
+    /*@GET
     @Path("tags")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Tags> getTagsJson() {
         return dbc.getAllTags();
-    }
+    }*/
 
     @GET
     @Path("favourites")
@@ -102,6 +101,21 @@ public class DBService {
     public Post postFav() {
         return null;
     }  
+    
+    @GET
+    @Path("test")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response test() throws JsonProcessingException{
+        ObjectMapper mapper = new ObjectMapper();
+        return Response.ok(mapper.writeValueAsString(dbc.findUser("ILKKACHAN"))).build();
+    }
+    
+    @GET
+    @Path("test2")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String test2(){
+        return "kill them all 2?";
+    }
 }
 
 

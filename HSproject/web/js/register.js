@@ -44,8 +44,8 @@ reqform.addEventListener('submit', (evt) => {
     evt.preventDefault();
     formOK = 0;
     const responseText = document.querySelector('#response');
-    //checkAttribute(inputs, 'required', checkEmpty);
-    //checkAttribute(inputs, 'pattern', checkPattern);
+    checkAttribute(inputs, 'required', checkEmpty);
+    checkAttribute(inputs, 'pattern', checkPattern);
     console.log(formOK);
     if (formOK === -4){
         if (responseText.classList.contains('responsetext')){
@@ -70,19 +70,16 @@ const register = () => {
         }
     };
     fetch('//10.114.34.129:8080/HSproject/db/service/register', settings).then((response) => {
-        return response.json();
-    }).then((json) => {
+        return response.text();
+    }).then((text) => {
         const responseText = document.querySelector('#response');
-        if(json.stringify === "Username already exists") {
-            /*console.log(response.stringify);
-            responseText.innerHTML = response.stringify;
-            responseText.classList.replace('hidden', 'responsetext');*/ 
-            alert(json.stringify);
-        } else {
-            /*responseText.innerHTML = response.stringify;
+        if(text.stringify === "Username already exists") {
+            console.log(text.stringify);
+            responseText.innerHTML = text.stringify;
             responseText.classList.replace('hidden', 'responsetext');
-            */
-           alert(json.stringify);
+        } else {
+            responseText.innerHTML = text.stringify;
+            responseText.classList.replace('hidden', 'responsetext');
         }
     });
 };

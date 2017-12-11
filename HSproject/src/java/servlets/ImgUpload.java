@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.User;
 import model.Post;
-import model.Tags;
+//import model.Tags;
 
 /**
  *

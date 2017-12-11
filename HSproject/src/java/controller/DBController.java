@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import model.User;
 import model.Post;
-import model.Tags;
+//import model.Tags;
 import model.Favourites;
 import model.FavouritesPK;
 
@@ -41,9 +41,9 @@ public class DBController {
         return em.createNamedQuery("Post.findAll").getResultList();
     }
 
-    public List<Tags> getAllTags(){
+    /*public List<Tags> getAllTags(){
         return em.createNamedQuery("Tags.findAll").getResultList();
-    }
+    }*/
 
     public List<Favourites> getAllFavs(){
         return em.createNamedQuery("Favourites.findAll").getResultList();
@@ -81,9 +81,5 @@ public class DBController {
             userId = u.getId();
         }
         return userId;
-    }
-    
-    public List<Post> getAllSourceUrl(){
-        return em.createNamedQuery("Post.findBySourceUrl").getResultList();
     }
 }
