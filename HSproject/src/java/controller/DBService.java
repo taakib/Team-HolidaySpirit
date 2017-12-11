@@ -40,12 +40,12 @@ public class DBService {
 
     @POST
     @Path("register")
-    @Produces(MediaType.TEXT_HTML)
+    //@Produces(MediaType.APPLICATION_JSON)
     public Response register(@FormParam("username") String name, @FormParam("password") String password) {
         Response r;
         if (dbc.findUser(name).size() > 0){
             //if username exists return an error message to the client
-            r = Response.notModified("Username already exists").build();
+            r = Response.ok("User already exists!").build();
         } else {
             User u = new User();
             u.setUsername(name);

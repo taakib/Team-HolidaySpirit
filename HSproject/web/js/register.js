@@ -1,7 +1,7 @@
 'use strict';
 //check for required fields
 //global variable to allow form submission
-let formOK = -4;
+let formOK = 0;
 //select all input elements
 const inputs = document.querySelectorAll('input');
 
@@ -16,7 +16,7 @@ const checkAttribute = (elements, attr, func) => {
 const checkEmpty = (element) => {
     if(element.value === '') {
         formOK ++;
-        //element.setAttribute('style', 'border: red solid 1px');
+        element.setAttribute('style', 'border: red solid 1px');
         //modern browsers:
         element.style='border: red solid 1px';
     } else {
@@ -42,7 +42,7 @@ let reqform = document.querySelector('form');
 
 reqform.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    //formOK = 0;
+    formOK = 0;
     const responseText = document.querySelector('#response');
     //checkAttribute(inputs, 'required', checkEmpty);
     //checkAttribute(inputs, 'pattern', checkPattern);
@@ -70,19 +70,19 @@ const register = () => {
         }
     };
     fetch('//10.114.34.129:8080/HSproject/db/service/register', settings).then((response) => {
-        return response;
-    }).then((response) => {
+        return response.json();
+    }).then((json) => {
         const responseText = document.querySelector('#response');
-        if(response.stringify === "Username already exists") {
+        if(json.stringify === "Username already exists") {
             /*console.log(response.stringify);
             responseText.innerHTML = response.stringify;
             responseText.classList.replace('hidden', 'responsetext');*/ 
-            alert(response.stringify);
+            alert(json.stringify);
         } else {
             /*responseText.innerHTML = response.stringify;
             responseText.classList.replace('hidden', 'responsetext');
             */
-           alert(response.stringify);
+           alert(json.stringify);
         }
     });
 };

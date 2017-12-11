@@ -30,7 +30,6 @@ const fetchImages = () => {
   const settings = {
         method: 'GET',
         credentials: 'same-origin' // this might be needed for some servers
-        //body: data
      };
   fetch('//10.114.34.129:8080/HSproject/db/service/fetchImgs',settings).then((response) => { 
   return response.json();
