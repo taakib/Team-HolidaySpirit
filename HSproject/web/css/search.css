@@ -147,29 +147,39 @@ body {
   font-size: 1em;
 }
 
-.tags {
-
-}
-
 main {
   width: 100%;
 }
 
 .gallery {
   list-style-type: none;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.gallery li {
+.img-container {
+    float: left;
     width: 30%;
+    height: 30%;
+    overflow: hidden;  
+    background-color: #ccc;
+    max-height: 30%;
     max-width: 30%;
-    max-height: 30%
+    border: #ddd solid;
+    position: relative;
+    
 }
 
-.gallery img {
-  width: 100%;
-
+.images {
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    display: block;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 #topBtn {
@@ -228,10 +238,6 @@ main {
   right: 1rem;
   font-size: 1.5em;
   text-decoration: none;
-}
-
-.replaceme {
-    
 }
 
 .responsetext {
