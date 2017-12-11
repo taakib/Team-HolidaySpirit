@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.Collection;
+//import java.util.List;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -40,12 +41,11 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Post implements Serializable {
 
     @OneToMany(mappedBy = "postId")
-    private Collection<Comments> commentsCollection;
-
+    private Collection<Comments> commentsList;
     @Column(name = "views")
     private Integer views;
-    @OneToMany(mappedBy = "postID")
-    private Collection<Tags> tagsCollection;
+    //@OneToMany(mappedBy = "postID")
+    //private List<Tags> tagsList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -73,8 +73,7 @@ public class Post implements Serializable {
     @ManyToOne
     private User uploaderId;
 
-    public Post() {
-        //this.uploadTime = uploadTime; 
+    public Post() { 
         this.views = 0;
     }
 
@@ -162,21 +161,21 @@ public class Post implements Serializable {
         this.views = views;
     }
 
+    /*@XmlTransient
+    public List<Tags> getTagsList() {
+        return tagsList;
+    }
+
+    public void setTagsList(List<Tags> tagsList) {
+        this.tagsList = tagsList;
+    }*/
+
     @XmlTransient
-    public Collection<Tags> getTagsCollection() {
-        return tagsCollection;
+    public Collection<Comments> getCommentsList() {
+        return commentsList;
     }
 
-    public void setTagsCollection(Collection<Tags> tagsCollection) {
-        this.tagsCollection = tagsCollection;
-    }
-
-    @XmlTransient
-    public Collection<Comments> getCommentsCollection() {
-        return commentsCollection;
-    }
-
-    public void setCommentsCollection(Collection<Comments> commentsCollection) {
-        this.commentsCollection = commentsCollection;
+    public void setCommentsList(Collection<Comments> commentsList) {
+        this.commentsList = commentsList;
     }
 }

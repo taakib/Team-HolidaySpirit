@@ -2,7 +2,6 @@ a
 {
     text-decoration: none;
     color: #232323;
-
     transition: color 0.3s ease;
 }
 
@@ -11,15 +10,12 @@ a:hover
     color: tomato;
 }
 
-#menuToggle
-{
+#menuToggle {
     display: block;
     position: relative;
-    top: 50px;
+    top: 40px;
     left: 50px;
-
     z-index: 1;
-
     -webkit-user-select: none;
     user-select: none;
 }
@@ -32,12 +28,9 @@ a:hover
     position: absolute;
     top: -7px;
     left: -5px;
-
     cursor: pointer;
-
     opacity: 0; /* hide this */
     z-index: 2; /* and place it over the hamburger */
-
     -webkit-touch-callout: none;
 }
 
@@ -51,14 +44,10 @@ a:hover
     height: 4px;
     margin-bottom: 5px;
     position: relative;
-
     background: #92A3C1;
     border-radius: 3px;
-
     z-index: 1;
-
     transform-origin: 4px 0px;
-
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
     background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
     opacity 0.55s ease;

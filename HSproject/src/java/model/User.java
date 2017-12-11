@@ -71,8 +71,8 @@ public class User implements Serializable {
     @Column(name = "logged_out")
     @Temporal(TemporalType.TIMESTAMP)
     private Date loggedOut;
-    @OneToMany(mappedBy = "uploaderId")
-    private Collection<Post> postCollection;
+    //@OneToMany(mappedBy = "uploaderId")
+    //private Collection<Post> postCollection;
 
     public User() {
         //this.userLevel = userLevel;
@@ -140,14 +140,14 @@ public class User implements Serializable {
         this.loggedOut = loggedOut;
     }
 
-    @XmlTransient
+    /*@XmlTransient
     public Collection<Post> getPostCollection() {
         return postCollection;
     }
 
     public void setPostCollection(Collection<Post> postCollection) {
         this.postCollection = postCollection;
-    }
+    }*/
 
     @Override
     public int hashCode() {

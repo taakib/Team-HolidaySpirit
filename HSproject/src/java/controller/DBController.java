@@ -7,7 +7,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import model.User;
 import model.Post;
-import model.Tags;
+//import model.Tags;
 import model.Favourites;
 import model.FavouritesPK;
 
@@ -32,19 +32,19 @@ public class DBController {
         em.persist(u);
         return u;
     }
-
-    public List<Post> getAllPosts(){
-        return em.createNamedQuery("Post.findAll").getResultList();
-    }
-
+  
     public Post insertPost(Post p){
         em.persist(p);
         return p;
     }
-
-    public List<Tags> getAllTags(){
-        return em.createNamedQuery("Tags.findAll").getResultList();
+    
+    public List<Post> getPosts(){
+        return em.createNamedQuery("Post.findAll").getResultList();
     }
+
+    /*public List<Tags> getAllTags(){
+        return em.createNamedQuery("Tags.findAll").getResultList();
+    }*/
 
     public List<Favourites> getAllFavs(){
         return em.createNamedQuery("Favourites.findAll").getResultList();
@@ -83,6 +83,7 @@ public class DBController {
         }
         return userId;
     }
+<<<<<<< HEAD
 
     public User findById(int id) {
         try {
@@ -93,4 +94,6 @@ public class DBController {
         }
     }
 
+=======
+>>>>>>> annibranch
 }
