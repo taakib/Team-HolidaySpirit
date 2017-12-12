@@ -164,12 +164,14 @@ main {
 .gallery li {
     width: 30%;
     max-width: 30%;
-    max-height: 30%
+    max-height: 30%;
+    overflow:hidden;
 }
 
 .gallery img {
   width: 100%;
-
+  height: 100%;
+  overflow:hidden;
 }
 
 #topBtn {
@@ -180,7 +182,7 @@ main {
   z-index: 99;
   border: none;
   outline: none;
-  background-color: red;
+  background-color: #3498db;
   color: white;
   cursor: pointer;
   padding: 15px;
@@ -198,7 +200,7 @@ main {
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background-color: red; /* Set a background color */
+  background-color: #3498db; /* Set a background color */
   color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
@@ -230,10 +232,6 @@ main {
   text-decoration: none;
 }
 
-.replaceme {
-    
-}
-
 .responsetext {
     position: absolute;
     font-size: 2em;
@@ -246,10 +244,6 @@ main {
 
 .lightbox-upload form input{
   margin-bottom: 5%;
-}
-
-.ui-fluid-dropdown {
-
 }
 
 .lightbox-img {
@@ -276,8 +270,12 @@ main {
   margin: auto;
 }
 
-.closeBtn {
+.replaceme {
+    text-align: center;
+}
 
+.closeBtn {
+    font-size: 2em;
 }
 /* ==========================================================================
    Media Queries

@@ -35,7 +35,6 @@ const upload = (evt) => {
     upform.classList.replace('replaceme','hidden');
     const response = document.querySelector('#response');
     response.innerHTML = "Success!";
-    response.classList.replace('hidden', 'responsetext');
     //direct to profilepage?
     location.reload();
   });
