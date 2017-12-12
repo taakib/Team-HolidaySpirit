@@ -79,13 +79,6 @@ public class DBService {
     public List<Post> fetch9id() {
         return dbc.getSpecificIdPosts();
 
-    @POST
-    @Path("search")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Post> getSearchedPost(@FormParam("search") String searchWord ) {
-        //query for all the posts that include the tag "searchWord"
-        //if no results return an empty gallery
-        return null;
     }
 
 
