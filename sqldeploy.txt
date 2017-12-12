@@ -1,0 +1,53 @@
+TEAM: Holiday Spirit (Anni Luonuankoski, Ilkka Miettinen, Mikael Meinander) 
+ 
+sql script to deploy the database 
+ 
+ 
+CREATE TABLE User( 
+ ID INT not null AUTO_INCREMENT UNIQUE, 
+ username CHAR(20) NOT NULL UNIQUE, 
+ passwd VARCHAR(200) NOT NULL, 
+ img_url VARCHAR(200), 
+ req_date DATETIME, 
+ user_level INT, 
+ logged_in DATETIME, 
+ logged_out DATETIME, 
+ PRIMARY KEY (ID) 
+); 
+ 
+CREATE TABLE Post( 
+ ID INT not null AUTO_INCREMENT UNIQUE, 
+ source_url VARCHAR(200) NOT NULL UNIQUE, 
+ title VARCHAR(30) NOT NULL, 
+ description VARCHAR(140), 
+ upload_time DATETIME, 
+ uploader_id INT, 
+ views INT, 
+ PRIMARY KEY (ID), 
+ FOREIGN KEY (uploader_id) references User(ID)  
+); 
+ 
+CREATE TABLE Favourites( 
+ user_ID INT, 
+ post_ID INT, 
+ favourite_time DATETIME, 
+ PRIMARY KEY(user_id, post_ID)  
+); 
+ 
+CREATE TABLE Tags( 
+ tag_name VARCHAR(15) NOT NULL UNIQUE, 
+ post_ID INT, 
+ PRIMARY KEY (tag_name), 
+ FOREIGN KEY (post_ID) references Post(ID)  
+); 
+ 
+CREATE TABLE Comments( 
+ ID INT AUTO_INCREMENT UNIQUE, 
+ comment_text CHAR(140) NOT NULL, 
+ commenter_id INT, 
+ comment_time DATETIME, 
+ post_id INT, 
+ PRIMARY KEY (ID), 
+ FOREIGN KEY (commenter_id) references User(ID), 
+ FOREIGN KEY (post_id) references Post(ID) 
+);
