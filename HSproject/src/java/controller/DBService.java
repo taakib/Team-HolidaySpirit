@@ -1,5 +1,7 @@
 package controller;
 
+//import com.fasterxml.jackson.core.JsonProcessingException;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -107,12 +109,12 @@ public class DBService {
     public Response test() throws JsonProcessingException{
         ObjectMapper mapper = new ObjectMapper();
         return Response.ok(mapper.writeValueAsString(dbc.findUser("ILKKACHAN"))).build();
-    }*/
+    }
 
     @GET
     @Path("test2")
     @Produces(MediaType.APPLICATION_JSON)
     public String test2(){
         return "kill them all 2?";
-    }
+    }*/
 }
