@@ -171,7 +171,7 @@ main {
 .lightbox-img {
   width: 70%;
   background-color: #fff;
-  position: absolute;
+  position:fixed;
   left: 50%;
   margin: 0 0 0 -36%;
   top: 1rem;
@@ -203,7 +203,7 @@ main {
    Media Queries
    ========================================================================== */
 
-@media only screen and (min-width: 669px) {
+@media only screen and (max-width: 669px) {
     body {
       /*max-width: 60em;
         margin: auto;
@@ -213,6 +213,16 @@ main {
     main {
 
     }
+    
+    .img-container {
+    max-height: 350px;
+    
+    }
+}
+
+@media only screen and (max-width: 450px) {
+
+
 }
 
 @media print,
