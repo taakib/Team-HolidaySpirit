@@ -92,5 +92,9 @@ public class DBController {
             return null;
         }
     }
+    
+    public List<Post> getSpecificIdPosts(){
+        return em.createNamedQuery("Post.findById").setParameter("id", 9).getResultList();
+    }
 
 }

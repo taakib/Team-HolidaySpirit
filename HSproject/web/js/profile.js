@@ -30,26 +30,26 @@ photoTab.addEventListener('click', (evt) => {
 //fetch images that have same id as current user
 //test this to set fetched img id as testnumber, like 9
 const fetchImagerinos = () => {
-    const ul = document.querySelector('ul');
+    const ul = document.querySelector('.profilephotoarea');
     const settings = {
         method: 'GET',
         credentials: 'same-origin' // this might be needed for some servers
                 //body: data
     };
-    fetch('//10.114.34.129:8080/PTHS/db/service/fetchImgs', settings).then((response) => {
+    fetch('//10.114.34.129:8080/PTHS/db/service/fetch9id', settings).then((response) => {
         return response.json();
     }).then((json) => {
         let html = '';
         json.forEach((Post) => {
             //here to take id
-            //if loggedinuserid=uploader id
-            html +=
-                    `<li>
+            //if loggedinuserid=uploader id   
+                html +=
+                        `<li>
             <a href="${Post.sourceUrl}"><img src="${Post.sourceUrl}"></a>
           </li>`;
         });
         ul.innerHTML = html;
-        linkActions();
+        linkActionsz();
     });
 };
 
@@ -57,8 +57,8 @@ const fetchImagerinos = () => {
 window.onload = fetchImagerinos;
 
 const modal = document.querySelector('#modalIMAGE');
-const linkActions = () => {
-    const linkerinos = document.querySelector('profilephotoarea').querySelectorAll('a');
+const linkActionsz = () => {
+    const linkerinos = document.querySelector('profilephotoarea').querySelector('a');
     //const a = document.querySelector('a');
     //const img = document.querySelectorAll('img');
     linkerinos.forEach((link) => {
@@ -83,7 +83,8 @@ closeButton.addEventListener('click', (evt) => {
 
 //practice version for NON fetched images
 const photoArea = document.getElementById('photoarea').querySelectorAll('a');
-window.onload = defaultPicModal;
+//window.onload = defaultPicModal;
+/*
 const defaultPicModal = () => {
     //const a = document.querySelector('a');
     //const img = document.querySelectorAll('img');
@@ -97,4 +98,4 @@ const defaultPicModal = () => {
             //get image , title, description and tags for the image
         });
     });
-};
+};*/

@@ -72,6 +72,12 @@ public class DBService {
     public List<Post> fetchImgs(){
         return dbc.getPosts();
     }
+    
+    @GET
+    @Path("fetch9id")
+    @Produces(value = {MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Post> fetch9id() {
+        return dbc.getSpecificIdPosts();
 
     @POST
     @Path("search")
