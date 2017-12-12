@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "Post")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Post.findAll", query = "SELECT p FROM Post p")
+    @NamedQuery(name = "Post.findAll", query = "SELECT p FROM Post p GROUP")
     , @NamedQuery(name = "Post.findById", query = "SELECT p FROM Post p WHERE p.id = :id")
     , @NamedQuery(name = "Post.findBySourceUrl", query = "SELECT p FROM Post p WHERE p.sourceUrl = :sourceUrl")
     , @NamedQuery(name = "Post.findByTitle", query = "SELECT p FROM Post p WHERE p.title = :title")
