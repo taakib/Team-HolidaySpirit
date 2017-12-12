@@ -97,6 +97,13 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+#tilelink
+{
+    text-decoration: none;
+    color: #FAFAFA;
+    transition: color 0.3s ease;
+}
+
 body
 {
     /* background-color:#205873; */
@@ -199,7 +206,7 @@ body
 }
 .tile:hover
 {
-    /*   background-color:#99aeff; */
+       background-color:#99aeff; 
     box-shadow: 0px 35px 77px -17px rgba(0,0,0,0.64);
     transform:scale(1.05);
 }
@@ -245,6 +252,10 @@ body
 {
     opacity:1;
     transform:translateY(0px);
+}
+
+#tile_container {
+    float: left;
 }
 
 .dots span:nth-child(1)
