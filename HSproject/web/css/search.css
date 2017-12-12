@@ -60,95 +60,9 @@ body {
 
 }
 
-.topnav a {
-
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #e9e9e9;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 7px 10px;
-  text-decoration: none;
-  font-size: 1em;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #2196F3;
-  color: white;
-}
-
-.menu-container {
-    float: left;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.bar1, .bar2, .bar3 {
-    width: 35px;
-    height: 5px;
-    background-color: #333;
-    margin: 6px 0;
-    transition: 0.4s;
-}
-
-.change .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
-    transform: rotate(-45deg) translate(-9px, 6px) ;
-}
-
-.change .bar2 {opacity: 0;}
-
-.change .bar3 {
-    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
-    transform: rotate(45deg) translate(-8px, -8px) ;
-}
-
-.search-container {
-  float: right;
-
-}
-
-.search-container input[type=text]{
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-}
-
-.search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.search-container button:hover {
-  background: #ccc;
-}
-
 .tagbox {
   text-align: center;
   font-size: 1em;
-}
-
-.tags {
-
 }
 
 main {
@@ -161,17 +75,25 @@ main {
   flex-wrap: wrap;
 }
 
-.gallery li {
+.img-container {
+    float: left;
     width: 30%;
+    height: 350px;
+    background-color: #ccc;
+    max-height: 350px;
     max-width: 30%;
-    max-height: 30%;
-    overflow:hidden;
+    border: #ddd solid;
+    position: relative;
+    overflow: hidden;
 }
 
-.gallery img {
-  width: 100%;
-  height: 100%;
-  overflow:hidden;
+.images {
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    display: block;
+    object-fit: cover;
 }
 
 #topBtn {

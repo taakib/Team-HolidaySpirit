@@ -33,8 +33,9 @@ const upload = (evt) => {
     //when file upload is complete, user server response to display uploaded image
     //console.log(json);
     upform.classList.replace('replaceme','hidden');
-    const response = document.querySelector('#response');
-    response.innerHTML = "Success!";
+    //const response = document.querySelector('#response');
+    //response.innerHTML = "Success!";
+    //response.classList.replace('hidden', 'responsetext');
     //direct to profilepage?
     location.reload();
   });

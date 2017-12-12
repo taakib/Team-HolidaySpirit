@@ -37,8 +37,8 @@ const fetchImages = () => {
     let html ='';
     json.forEach((Post) => {
       html +=
-          `<li>
-            <a href="${Post.sourceUrl}"><img src="${Post.sourceUrl}"></a>
+          `<li class="img-container">
+            <a href="${Post.sourceUrl}"><img class="images" src="${Post.sourceUrl}"></a>
           </li>`;
     });
     ul.innerHTML = html;
